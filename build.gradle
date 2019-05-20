@@ -12,8 +12,17 @@ repositories {
 }
 
 dependencies {
+	compile group: 'org.jacoco', name: 'org.jacoco.agent', version: '0.7.5.201505241946'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 	testImplementation 'org.mockito:mockito-core:2.7.22'
 	testCompile("org.assertj:assertj-core:3.11.1")
 }
+
+apply plugin: 'jacoco'
+test {
+	useJUnitPlatform()
+}
+
+test.finalizedBy jacocoTestReport
+check.dependsOn jacocoTestCoverageVerification
