@@ -10,4 +10,6 @@ public class TestDataGenerator {
     public static final LocalTime _09_01 = LocalTime.parse("09:01");
     public static final LocalTime _12_01 = LocalTime.parse("12:01");
     public static final LocalTime _11_31 = LocalTime.parse("11:31");
+
+    public static final String ASTRID = "ASTRID";
 }
