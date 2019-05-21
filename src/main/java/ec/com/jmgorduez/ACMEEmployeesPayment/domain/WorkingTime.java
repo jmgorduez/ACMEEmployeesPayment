@@ -20,7 +20,7 @@ public class WorkingTime implements IPayable {
     }
 
     @Override
-    public Float payment() {
-        return paymentStrategy.apply(workedHours);
+    public Double payment() {
+        return paymentStrategy.apply(workedHours).doubleValue();
     }
 }

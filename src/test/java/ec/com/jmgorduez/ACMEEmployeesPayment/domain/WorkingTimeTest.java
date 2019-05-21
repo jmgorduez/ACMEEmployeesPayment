@@ -14,12 +14,12 @@ class WorkingTimeTest {
     void payment() {
         workingTimeUnderTest = new WorkingTime(_09_01, _12_01, workedHours -> _15*workedHours);
         assertThat(workingTimeUnderTest.payment())
-                .isEqualTo(_45_USD);
+                .isEqualByComparingTo(_45_USD);
         workingTimeUnderTest = new WorkingTime(_09_01, _12_01, workedHours -> _20*workedHours);
         assertThat(workingTimeUnderTest.payment())
-                .isEqualTo(_60);
+                .isEqualByComparingTo(_60_USD);
         workingTimeUnderTest = new WorkingTime(_09_01, _11_31, workedHours -> _20*workedHours);
         assertThat(workingTimeUnderTest.payment())
-                .isEqualTo(_50_USD);
+                .isEqualByComparingTo(_50_USD);
     }
 }
