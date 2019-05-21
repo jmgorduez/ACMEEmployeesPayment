@@ -6,6 +6,9 @@ public class TestDataGenerator {
 
     public static final Integer ONE = 1;
 
+    public static final Float _2_HOURS_30_MINUTES = 2.5F;
+    public static final Float _3_HOURS = 3F;
+
     public static final Double _45_USD = 45D;
     public static final Double _50_USD = 50D;
     public static final Double _87_USD_50_c = 87.5D;
