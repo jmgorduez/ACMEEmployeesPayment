@@ -1,5 +1,6 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,9 +24,9 @@ class EmployeePaySheetTest {
     @Test
     void payment() {
         employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_01, _11_31, HOUR::basicUnitOfTime,
-                workedHours -> _15*workedHours));
+                TestDataGenerator::_15_USD_Per_Hours));
         employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_01, _11_31, HOUR::basicUnitOfTime,
-                workedHours -> _20*workedHours));
+                TestDataGenerator::_20_USD_Per_Hours));
         assertThat(employeePaySheetUnderTest.payment())
                 .isEqualByComparingTo(_87_USD_50_c);
     }

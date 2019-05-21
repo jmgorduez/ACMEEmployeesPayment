@@ -1,5 +1,6 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime;
 import org.junit.jupiter.api.Test;
@@ -18,15 +19,15 @@ class WorkingTimeTest {
     @Test
     void payment() {
         workingTimeUnderTest = new WorkingTime(_09_01, _12_01, HOUR::basicUnitOfTime,
-                workedHours -> _15*workedHours);
+                TestDataGenerator::_15_USD_Per_Hours);
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_45_USD);
         workingTimeUnderTest = new WorkingTime(_09_01, _12_01, HOUR::basicUnitOfTime,
-                workedHours -> _20*workedHours);
+                TestDataGenerator::_20_USD_Per_Hours);
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_60_USD);
         workingTimeUnderTest = new WorkingTime(_09_01, _11_31, HOUR::basicUnitOfTime,
-                workedHours -> _20*workedHours);
+                TestDataGenerator::_20_USD_Per_Hours);
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_50_USD);
     }
