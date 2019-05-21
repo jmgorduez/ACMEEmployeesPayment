@@ -8,9 +8,10 @@ import java.util.List;
 public class EmployeePaySheet implements IEmployeePaySheet {
 
     private List<IPayable> workingTimes;
+    private final String employeeName;
 
     public EmployeePaySheet(String employeeName){
-
+        this.employeeName = employeeName;
     }
 
     @Override
@@ -20,7 +21,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
     @Override
     public String employeeName() {
-        return null;
+        return employeeName;
     }
 
     @Override
