@@ -5,6 +5,7 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator._60_USD;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static java.time.temporal.ChronoUnit.MINUTES;
