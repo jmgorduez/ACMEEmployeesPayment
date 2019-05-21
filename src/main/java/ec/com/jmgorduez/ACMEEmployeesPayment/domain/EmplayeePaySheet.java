@@ -9,7 +9,7 @@ public class EmplayeePaySheet implements IPayable {
     private List<IPayable> workingTimes;
 
     @Override
-    public Integer payment() {
+    public Float payment() {
         return null;
     }
 }
