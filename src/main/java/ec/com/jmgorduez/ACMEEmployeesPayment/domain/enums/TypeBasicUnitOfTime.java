@@ -7,7 +7,8 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._60;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
 public enum TypeBasicUnitOfTime {
-    HOUR((start, end) -> start.until(end, MINUTES) / _60);
+
+    HOUR(TypeBasicUnitOfTime::numberOfHours) ;
 
     private final BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
 
@@ -17,5 +18,9 @@ public enum TypeBasicUnitOfTime {
 
     public final Float basicUnitOfTime(LocalTime start, LocalTime end){
         return getBasicUnitOfTime.apply(start, end);
+    }
+
+    private static Float numberOfHours(LocalTime start, LocalTime end){
+        return start.until(end, MINUTES) / _60;
     }
 }
