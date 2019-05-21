@@ -12,7 +12,7 @@ class PaymentStrategyTest {
     @Test
     void paymentStrategy() {
         assertThat(PaymentStrategy.MO_FR_00_01_09_00.paymentStrategy(_3_HOURS))
-        .isEqualByComparingTo(_75_USD);
+                .isEqualByComparingTo(_75_USD);
         assertThat(PaymentStrategy.MO_FR_09_01_18_00.paymentStrategy(_3_HOURS))
                 .isEqualByComparingTo(_45_USD);
         assertThat(PaymentStrategy.MO_FR_18_01_00_00.paymentStrategy(_3_HOURS))
