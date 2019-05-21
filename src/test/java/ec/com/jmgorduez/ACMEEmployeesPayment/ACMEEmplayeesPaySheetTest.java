@@ -1,11 +1,10 @@
-package ec.com.jmgorduez.ACMEEmployesPayment;
+package ec.com.jmgorduez.ACMEEmployeesPayment;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-class ACMEEmployesEmplayeePaySheetTest {
+class ACMEEmplayeesPaySheetTest {
 
     @Test
     void main() {
