@@ -17,8 +17,10 @@ public class EmployeePaySheet implements IEmployeePaySheet {
     }
 
     @Override
-    public Float payment() {
-        return null;
+    public Double payment() {
+        return workingTimes.stream()
+                .map(IPayable::payment).mapToDouble(Double::doubleValue)
+                .sum();
     }
 
     @Override
