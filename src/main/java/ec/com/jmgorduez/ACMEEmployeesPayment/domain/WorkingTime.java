@@ -6,9 +6,6 @@ import java.time.LocalTime;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._60;
-import static java.time.temporal.ChronoUnit.MINUTES;
-
 public class WorkingTime implements IPayable {
 
     private LocalTime startTime;
