@@ -7,7 +7,7 @@ import java.util.List;
 
 public class EmployeePaySheet implements IEmployeePaySheet {
 
-    private List<IPayable> workingTimes;
+    List<IPayable> workingTimes;
     private final String employeeName;
 
     public EmployeePaySheet(String employeeName){

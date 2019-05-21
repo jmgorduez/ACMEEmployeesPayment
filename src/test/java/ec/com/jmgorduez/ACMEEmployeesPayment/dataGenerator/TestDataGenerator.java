@@ -4,6 +4,8 @@ import java.time.LocalTime;
 
 public class TestDataGenerator {
 
+    public static final Integer ONE = 1;
+
     public static final Float _45 = 45F;
     public static final Float _50 = 50F;
 
