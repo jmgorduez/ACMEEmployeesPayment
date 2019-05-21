@@ -10,5 +10,9 @@ public enum PaymentStrategy {
     SA_SU_09_01_18_00,
     SA_SU_18_01_00_00;
     
-    private final Function<Integer, Integer> paymentStrategy = null;
+    private final Function<Float, Double> paymentStrategy = null;
+
+    public Double paymentStrategy(Float basicUnitOfTime){
+        return null;
+    }
 }

@@ -11,6 +11,7 @@ public class TestDataGenerator {
 
     public static final Double _45_USD = 45D;
     public static final Double _50_USD = 50D;
+    public static final Double _75_USD = 75D;
     public static final Double _87_USD_50_c = 87.5D;
 
     public static final LocalTime _09_01 = LocalTime.parse("09:01");
