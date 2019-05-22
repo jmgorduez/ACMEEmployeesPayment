@@ -4,7 +4,7 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.WorkingTime;
 
 import java.time.LocalTime;
 
-import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy.MO_FR_09_01_18_00;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy._15_USD_PER_UNIT_OF_TIME;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._15;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._20;
@@ -23,7 +23,6 @@ public class TestDataGenerator {
     public static final Double _87_USD_50_c = 87.5D;
     public static final Double _90_USD = 90D;
 
-    public static final LocalTime _09_00 = LocalTime.parse("09:00");
     public static final LocalTime _10_00 = LocalTime.parse("10:00");
     public static final LocalTime _11_30 = LocalTime.parse("11:30");
     public static final LocalTime _12_00 = LocalTime.parse("12:00");
@@ -32,11 +31,11 @@ public class TestDataGenerator {
     public static final LocalTime _21_00 = LocalTime.parse("21:00");
 
     public static final WorkingTime MO_10_00_12_00 = new WorkingTime(_10_00, _12_00,
-            HOUR::basicUnitOfTime, MO_FR_09_01_18_00::paymentStrategy);
+            HOUR::basicUnitOfTime, _15_USD_PER_UNIT_OF_TIME::paymentStrategy);
     public static final WorkingTime TH_12_00_14_00 = new WorkingTime(_12_00, _14_00,
-            HOUR::basicUnitOfTime, MO_FR_09_01_18_00::paymentStrategy);
+            HOUR::basicUnitOfTime, _15_USD_PER_UNIT_OF_TIME::paymentStrategy);
     public static final WorkingTime SU_20_00_21_00 = new WorkingTime(_20_00, _21_00,
-            HOUR::basicUnitOfTime, MO_FR_09_01_18_00::paymentStrategy);
+            HOUR::basicUnitOfTime, _15_USD_PER_UNIT_OF_TIME::paymentStrategy);
 
     public static final String ASTRID = "ASTRID";
 
