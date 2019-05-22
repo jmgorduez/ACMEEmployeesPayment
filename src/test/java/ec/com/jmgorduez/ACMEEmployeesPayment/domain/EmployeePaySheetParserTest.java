@@ -33,6 +33,18 @@ class EmployeePaySheetParserTest {
                 .isEqualToComparingFieldByField(employeePaySheetExpected);
     }
 
+    @Test
+    void getName(){
+        assertThat(employeePaySheetParserUnderTest.getName(ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
+                .isEqualTo(ASTRID);
+    }
+
+    @Test
+    void getWorkingTimes(){
+        assertThat(employeePaySheetParserUnderTest.getWorkingTimes(ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
+                .contains(MO_10_00_12_00_STRING, TH_12_00_14_00_STRING, SU_20_00_21_00_STRING);
+    }
+
     private IPayable getWorkingTime(String value) {
         return payables.poll();
     }

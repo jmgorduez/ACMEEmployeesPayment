@@ -19,11 +19,12 @@ public class EmployeePaySheetParser implements IEmployeePaySheetParser {
         return result;
     }
 
-    private String getName(String line){
+    String getName(String line){
         return line.split(ASSIGNMENT_CHARACTER)[ZERO];
     }
 
-    private Stream<String> getWorkingTimes(String line){
-        return Stream.of(line.substring(line.indexOf(ASSIGNMENT_CHARACTER)).split(COMMA_CHARACTER));
+    Stream<String> getWorkingTimes(String line){
+        Integer workingTimesStartIndex = line.indexOf(ASSIGNMENT_CHARACTER)+ ONE;
+        return Stream.of(line.substring(workingTimesStartIndex).split(COMMA_CHARACTER));
     }
 }

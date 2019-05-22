@@ -3,6 +3,7 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.utils;
 public class Constants {
 
     public static final Integer ZERO = 0;
+    public static final Integer ONE = 1;
 
     public static final Float _15 = 15F;
     public static final Float _20 = 20F;
