@@ -1,5 +1,6 @@
-package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
+package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.EmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;

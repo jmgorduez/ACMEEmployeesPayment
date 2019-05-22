@@ -1,13 +1,7 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
-import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDay.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 
 public enum PaymentStrategy {

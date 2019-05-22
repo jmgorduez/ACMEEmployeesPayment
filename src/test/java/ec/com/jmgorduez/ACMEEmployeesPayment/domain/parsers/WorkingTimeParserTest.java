@@ -1,6 +1,6 @@
-package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
+package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 
-import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,6 @@ import java.time.LocalTime;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class WorkingTimeParserTest {
 

@@ -68,4 +68,10 @@ class WeekDayTest {
         assertThat(SATURDAY.paymentStrategy(_00_00,_09_00))
                 .isEqualTo(_30_USD_PER_UNIT_OF_TIME);
     }
+
+    @Test
+    void getFirstElement(){
+        assertThat(WeekDay.getFirstElement(MONDAY, FRIDAY))
+                .isEqualTo(MONDAY);
+    }
 }

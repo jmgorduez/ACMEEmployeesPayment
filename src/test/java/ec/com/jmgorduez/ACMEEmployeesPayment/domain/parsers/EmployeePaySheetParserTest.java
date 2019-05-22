@@ -1,6 +1,8 @@
-package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
+package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.EmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

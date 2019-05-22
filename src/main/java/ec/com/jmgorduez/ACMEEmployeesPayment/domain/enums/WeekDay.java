@@ -40,7 +40,7 @@ public enum WeekDay {
         return weekDay -> weekDay.value.equals(value);
     }
 
-    private static WeekDay getFirstElement(WeekDay weekDay, WeekDay weekDay2) {
+    static WeekDay getFirstElement(WeekDay weekDay, WeekDay weekDay2) {
         return weekDay;
     }
 
