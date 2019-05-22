@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDay.*;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WeekDayTest {
@@ -25,5 +27,7 @@ class WeekDayTest {
                 .isEqualTo(SATURDAY);
         assertThat(WeekDay.parse(SU))
                 .isEqualTo(SUNDAY);
+        assertThatThrownBy(() -> WeekDay.parse(SU_20_00_21_00_STRING))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

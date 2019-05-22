@@ -13,4 +13,12 @@ public class Constants {
 
     public static final String ASSIGNMENT_CHARACTER = "=";
     public static final String COMMA_CHARACTER = ",";
+
+    public static final String MO = "MO";
+    public static final String TU = "TU";
+    public static final String WE = "WE";
+    public static final String TH = "TH";
+    public static final String FR = "FR";
+    public static final String SA = "SA";
+    public static final String SU = "SU";
 }
