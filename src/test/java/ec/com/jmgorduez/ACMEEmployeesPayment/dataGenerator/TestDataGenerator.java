@@ -38,21 +38,15 @@ public class TestDataGenerator {
     public static final WorkingTime SU_20_00_21_00 = new WorkingTime(_20_00, _21_00,
             HOUR::basicUnitOfTime, MO_FR_09_01_18_00::paymentStrategy);
 
-    public static final String MO = "MO";
-    public static final String TU = "TU";
-    public static final String WE = "WE";
-    public static final String TH = "TH";
-    public static final String FR = "FR";
-    public static final String SA = "SA";
-    public static final String SU = "SU";
-
     public static final String ASTRID = "ASTRID";
 
     public static final String ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00
             = "ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00";
 
     public static final String MO_10_00_12_00_STRING = "MO10:00-12:00";
+    public static final String MO_01_00_21_00_STRING = "SU01:00-21:00";
     public static final String TH_12_00_14_00_STRING = "TH12:00-14:00";
+    public static final String TH_19_00_20_00_STRING = "TH19:00-20:00";
     public static final String SU_20_00_21_00_STRING = "SU20:00-21:00";
 
     public static Double _15_USD_Per_Hours(Float hours){
