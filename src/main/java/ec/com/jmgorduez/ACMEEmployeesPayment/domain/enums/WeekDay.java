@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 
+import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 
 public enum WeekDay {
@@ -24,7 +25,7 @@ public enum WeekDay {
         this.getPaymentStrategyFor = getPaymentStrategyFor;
     }
 
-    public static WeekDay parse(String value){
+    public static WeekDay parse(String value) {
         return Arrays.stream(values())
                 .filter(isValueEqualTo(value))
                 .reduce(WeekDay::getFirstElement)
@@ -35,11 +36,36 @@ public enum WeekDay {
         return weekDay -> weekDay.value.equals(value);
     }
 
-    private static WeekDay getFirstElement(WeekDay weekDay, WeekDay weekDay2){
+    private static WeekDay getFirstElement(WeekDay weekDay, WeekDay weekDay2) {
         return weekDay;
     }
 
-    static PaymentStrategy paymentStrategyWorkDays(LocalTime start, LocalTime end){
-        return null;
+    static PaymentStrategy paymentStrategyWorkDays(LocalTime start, LocalTime end) {
+        if (start.isBefore(end)) {
+            if (areBetween_00_00_And_09_00(start, end)) {
+                return _25_USD_PER_UNIT_OF_TIME;
+            }
+            if (areBetween_09_00_And_18_00(start, end)) {
+                return _15_USD_PER_UNIT_OF_TIME;
+            }
+        } else {
+            if (areBetween_18_00_And_00_00(start, end)) {
+                return _20_USD_PER_UNIT_OF_TIME;
+            }
+        }
+        throw new IllegalArgumentException();
     }
+
+    private static boolean areBetween_00_00_And_09_00(LocalTime start, LocalTime end) {
+        return (start.isAfter(_00_00) || start.equals(_00_00)) && (end.isBefore(_09_00) || end.equals(_09_00));
+    }
+
+    private static boolean areBetween_09_00_And_18_00(LocalTime start, LocalTime end) {
+        return (start.isAfter(_09_00) || start.equals(_09_00)) && (end.isBefore(_18_00) || end.equals(_18_00));
+    }
+
+    private static boolean areBetween_18_00_And_00_00(LocalTime start, LocalTime end) {
+        return (start.isAfter(_18_00) || start.equals(_18_00)) && (end.isBefore(_00_00) || end.equals(_00_00));
+    }
+
 }
