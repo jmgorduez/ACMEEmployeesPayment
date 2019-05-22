@@ -26,9 +26,7 @@ public class Constants {
     public static final String SU = "SU";
 
     public static final LocalTime _00_00 = LocalTime.parse("00:00");
-    public static final LocalTime _00_01 = LocalTime.parse("00:01");
     public static final LocalTime _09_00 = LocalTime.parse("09:00");
-    public static final LocalTime _09_01 = LocalTime.parse("09:01");
     public static final LocalTime _18_00 = LocalTime.parse("18:00");
-    public static final LocalTime _18_01 = LocalTime.parse("18:01");
+    public static final LocalTime _23_59 = LocalTime.parse("23:59");
 }

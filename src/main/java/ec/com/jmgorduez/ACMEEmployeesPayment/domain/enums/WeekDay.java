@@ -25,8 +25,8 @@ public enum WeekDay {
         this.getPaymentStrategyFor = getPaymentStrategyFor;
     }
 
-    public PaymentStrategy paymentStrategy(LocalTime start, LocalTime end){
-        return null;
+    public PaymentStrategy paymentStrategy(LocalTime start, LocalTime end) {
+        return getPaymentStrategyFor.apply(start, end);
     }
 
     public static WeekDay parse(String value) {
@@ -45,33 +45,29 @@ public enum WeekDay {
     }
 
     static PaymentStrategy paymentStrategyWorkDays(LocalTime start, LocalTime end) {
-        if (start.isBefore(end)) {
-            if (areBetween_00_00_And_09_00(start, end)) {
-                return _25_USD_PER_UNIT_OF_TIME;
-            }
-            if (areBetween_09_00_And_18_00(start, end)) {
-                return _15_USD_PER_UNIT_OF_TIME;
-            }
-        } else {
-            if (areBetween_18_00_And_00_00(start, end)) {
-                return _20_USD_PER_UNIT_OF_TIME;
-            }
+        end = end.equals(_00_00) ? _23_59 : end;
+        if (areBetween_00_00_And_09_00(start, end)) {
+            return _25_USD_PER_UNIT_OF_TIME;
+        }
+        if (areBetween_09_00_And_18_00(start, end)) {
+            return _15_USD_PER_UNIT_OF_TIME;
+        }
+        if (areBetween_18_00_And_23_59(start, end)) {
+            return _20_USD_PER_UNIT_OF_TIME;
         }
         throw new IllegalArgumentException();
     }
 
     static PaymentStrategy paymentStrategyWeekendDays(LocalTime start, LocalTime end) {
-        if (start.isBefore(end)) {
-            if (areBetween_00_00_And_09_00(start, end)) {
-                return _30_USD_PER_UNIT_OF_TIME;
-            }
-            if (areBetween_09_00_And_18_00(start, end)) {
-                return _20_USD_PER_UNIT_OF_TIME;
-            }
-        } else {
-            if (areBetween_18_00_And_00_00(start, end)) {
-                return _25_USD_PER_UNIT_OF_TIME;
-            }
+        end = end.equals(_00_00) ? _23_59 : end;
+        if (areBetween_00_00_And_09_00(start, end)) {
+            return _30_USD_PER_UNIT_OF_TIME;
+        }
+        if (areBetween_09_00_And_18_00(start, end)) {
+            return _20_USD_PER_UNIT_OF_TIME;
+        }
+        if (areBetween_18_00_And_23_59(start, end)) {
+            return _25_USD_PER_UNIT_OF_TIME;
         }
         throw new IllegalArgumentException();
     }
@@ -84,7 +80,7 @@ public enum WeekDay {
         return (start.isAfter(_09_00) || start.equals(_09_00)) && (end.isBefore(_18_00) || end.equals(_18_00));
     }
 
-    private static boolean areBetween_18_00_And_00_00(LocalTime start, LocalTime end) {
-        return (start.isAfter(_18_00) || start.equals(_18_00)) && (end.isBefore(_00_00) || end.equals(_00_00));
+    private static boolean areBetween_18_00_And_23_59(LocalTime start, LocalTime end) {
+        return (start.isAfter(_18_00) || start.equals(_18_00)) && (end.isBefore(_23_59) || end.equals(_23_59));
     }
 }
