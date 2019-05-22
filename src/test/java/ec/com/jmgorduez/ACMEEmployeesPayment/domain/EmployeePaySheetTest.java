@@ -1,16 +1,12 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._15;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._20;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeePaySheetTest {
 
@@ -23,9 +19,9 @@ class EmployeePaySheetTest {
 
     @Test
     void payment() {
-        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_01, _11_31, HOUR::basicUnitOfTime,
+        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, HOUR::basicUnitOfTime,
                 TestDataGenerator::_15_USD_Per_Hours));
-        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_01, _11_31, HOUR::basicUnitOfTime,
+        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, HOUR::basicUnitOfTime,
                 TestDataGenerator::_20_USD_Per_Hours));
         assertThat(employeePaySheetUnderTest.payment())
                 .isEqualByComparingTo(_87_USD_50_c);
@@ -41,8 +37,8 @@ class EmployeePaySheetTest {
     void addPayableItem() {
         assertThat(employeePaySheetUnderTest.workingTimes.isEmpty())
                 .isTrue();
-        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_01, _11_31, HOUR::basicUnitOfTime,
-                Float::floatValue));
+        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, HOUR::basicUnitOfTime,
+                TestDataGenerator::_15_USD_Per_Hours));
         assertThat(employeePaySheetUnderTest.workingTimes.size())
                 .isEqualTo(ONE);
     }

@@ -11,11 +11,11 @@ public class WorkingTime implements IPayable {
     private LocalTime startTime;
     private LocalTime endTime;
     private BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
-    private Function<Float, Float> paymentStrategy;
+    private Function<Float, Double> paymentStrategy;
 
     public WorkingTime(LocalTime startTime, LocalTime endTime,
                        BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime,
-                       Function<Float, Float> paymentStrategy) {
+                       Function<Float, Double> paymentStrategy) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.getBasicUnitOfTime = getBasicUnitOfTime;
@@ -24,6 +24,6 @@ public class WorkingTime implements IPayable {
 
     @Override
     public Double payment() {
-        return paymentStrategy.apply(getBasicUnitOfTime.apply(startTime, endTime)).doubleValue();
+        return paymentStrategy.apply(getBasicUnitOfTime.apply(startTime, endTime));
     }
 }
