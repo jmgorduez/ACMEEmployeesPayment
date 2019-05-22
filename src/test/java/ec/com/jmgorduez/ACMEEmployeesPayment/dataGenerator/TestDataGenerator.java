@@ -38,6 +38,14 @@ public class TestDataGenerator {
     public static final WorkingTime SU_20_00_21_00 = new WorkingTime(_20_00, _21_00,
             HOUR::basicUnitOfTime, MO_FR_09_01_18_00::paymentStrategy);
 
+    public static final String MO = "MO";
+    public static final String TU = "TU";
+    public static final String WE = "WE";
+    public static final String TH = "TH";
+    public static final String FR = "FR";
+    public static final String SA = "SA";
+    public static final String SU = "SU";
+
     public static final String ASTRID = "ASTRID";
 
     public static final String ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00
