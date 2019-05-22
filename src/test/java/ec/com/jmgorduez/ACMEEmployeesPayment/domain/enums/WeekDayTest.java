@@ -44,4 +44,16 @@ class WeekDayTest {
         assertThatThrownBy(() ->  WeekDay.paymentStrategyWorkDays(_00_00, _18_00))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void paymentStrategyWeekendDays(){
+        assertThat(WeekDay.paymentStrategyWeekendDays(_00_00, _09_00))
+                .isEqualTo(_30_USD_PER_UNIT_OF_TIME);
+        assertThat(WeekDay.paymentStrategyWeekendDays(_09_00, _18_00))
+                .isEqualTo(_20_USD_PER_UNIT_OF_TIME);
+        assertThat(WeekDay.paymentStrategyWeekendDays(_18_00, _00_00))
+                .isEqualTo(_25_USD_PER_UNIT_OF_TIME);
+        assertThatThrownBy(() ->  WeekDay.paymentStrategyWeekendDays(_00_00, _18_00))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

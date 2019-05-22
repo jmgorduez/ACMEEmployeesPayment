@@ -9,11 +9,11 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 
 public enum WeekDay {
-    MONDAY(MO, null),
-    TUESDAY(TU, null),
-    WEDNESDAY(WE, null),
-    THURSDAY(TH, null),
-    FRIDAY(FR, null),
+    MONDAY(MO, WeekDay::paymentStrategyWorkDays),
+    TUESDAY(TU, WeekDay::paymentStrategyWorkDays),
+    WEDNESDAY(WE, WeekDay::paymentStrategyWorkDays),
+    THURSDAY(TH, WeekDay::paymentStrategyWorkDays),
+    FRIDAY(FR, WeekDay::paymentStrategyWorkDays),
     SATURDAY(SA, null),
     SUNDAY(SU, null);
 
@@ -54,6 +54,10 @@ public enum WeekDay {
             }
         }
         throw new IllegalArgumentException();
+    }
+
+    static PaymentStrategy paymentStrategyWeekendDays(LocalTime start, LocalTime end) {
+        return null;
     }
 
     private static boolean areBetween_00_00_And_09_00(LocalTime start, LocalTime end) {
