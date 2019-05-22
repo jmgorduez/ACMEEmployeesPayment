@@ -7,6 +7,7 @@ public class Constants {
 
     public static final Integer ZERO = 0;
     public static final Integer ONE = 1;
+    public static final Integer TWO = 2;
 
     public static final Float _15 = 15F;
     public static final Float _20 = 20F;
@@ -16,6 +17,7 @@ public class Constants {
 
     public static final String ASSIGNMENT_CHARACTER = "=";
     public static final String COMMA_CHARACTER = ",";
+    public static final String MINUS_CHARACTER = "-";
 
     public static final String MO = "MO";
     public static final String TU = "TU";

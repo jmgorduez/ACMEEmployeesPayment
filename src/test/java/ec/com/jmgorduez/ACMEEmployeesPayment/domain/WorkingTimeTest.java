@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._09_00;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WorkingTimeTest {
