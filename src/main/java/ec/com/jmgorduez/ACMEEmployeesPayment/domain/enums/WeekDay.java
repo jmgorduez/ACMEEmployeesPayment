@@ -14,8 +14,8 @@ public enum WeekDay {
     WEDNESDAY(WE, WeekDay::paymentStrategyWorkDays),
     THURSDAY(TH, WeekDay::paymentStrategyWorkDays),
     FRIDAY(FR, WeekDay::paymentStrategyWorkDays),
-    SATURDAY(SA, null),
-    SUNDAY(SU, null);
+    SATURDAY(SA, WeekDay::paymentStrategyWeekendDays),
+    SUNDAY(SU, WeekDay::paymentStrategyWeekendDays);
 
     private final String value;
     private final BiFunction<LocalTime, LocalTime, PaymentStrategy> getPaymentStrategyFor;
@@ -57,7 +57,19 @@ public enum WeekDay {
     }
 
     static PaymentStrategy paymentStrategyWeekendDays(LocalTime start, LocalTime end) {
-        return null;
+        if (start.isBefore(end)) {
+            if (areBetween_00_00_And_09_00(start, end)) {
+                return _30_USD_PER_UNIT_OF_TIME;
+            }
+            if (areBetween_09_00_And_18_00(start, end)) {
+                return _20_USD_PER_UNIT_OF_TIME;
+            }
+        } else {
+            if (areBetween_18_00_And_00_00(start, end)) {
+                return _25_USD_PER_UNIT_OF_TIME;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 
     private static boolean areBetween_00_00_And_09_00(LocalTime start, LocalTime end) {
@@ -71,5 +83,4 @@ public enum WeekDay {
     private static boolean areBetween_18_00_And_00_00(LocalTime start, LocalTime end) {
         return (start.isAfter(_18_00) || start.equals(_18_00)) && (end.isBefore(_00_00) || end.equals(_00_00));
     }
-
 }
