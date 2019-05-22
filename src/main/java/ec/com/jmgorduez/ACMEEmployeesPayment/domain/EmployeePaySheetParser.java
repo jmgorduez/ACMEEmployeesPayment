@@ -3,7 +3,6 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
-import ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants;
 
 import java.util.function.Function;
 import java.util.stream.Stream;

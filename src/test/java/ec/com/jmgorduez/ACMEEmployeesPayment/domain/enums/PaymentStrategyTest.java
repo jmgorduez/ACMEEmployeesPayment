@@ -1,11 +1,9 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums;
 
-import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentStrategyTest {
 
