@@ -25,6 +25,10 @@ public enum WeekDay {
         this.getPaymentStrategyFor = getPaymentStrategyFor;
     }
 
+    public PaymentStrategy paymentStrategy(LocalTime start, LocalTime end){
+        return null;
+    }
+
     public static WeekDay parse(String value) {
         return Arrays.stream(values())
                 .filter(isValueEqualTo(value))
