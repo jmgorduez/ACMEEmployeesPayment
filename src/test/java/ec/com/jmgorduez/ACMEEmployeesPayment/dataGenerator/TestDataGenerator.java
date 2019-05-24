@@ -43,9 +43,12 @@ public class TestDataGenerator {
             = "ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00";
     public static final String RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00
             = "RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00";
+    public static final String JUANMA_MO_09_00_12_00_TU_09_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00
+            = "JUANMA=MO09:00-12:00,TU09:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00";
 
     public static final String THE_AMOUNT_TO_PAY_RENE_IS_215_USD = "The amount to pay RENE is: 215 USD";
     public static final String THE_AMOUNT_TO_PAY_ASTRID_IS_85_USD = "The amount to pay ASTRID is: 85 USD";
+    public static final String THE_AMOUNT_TO_PAY_JUANMA_IS_245_USD = "The amount to pay JUANMA is: 245 USD";
 
     public static final String MO_10_00_12_00_STRING = "MO10:00-12:00";
     public static final String MO_01_00_21_00_STRING = "SU01:00-21:00";

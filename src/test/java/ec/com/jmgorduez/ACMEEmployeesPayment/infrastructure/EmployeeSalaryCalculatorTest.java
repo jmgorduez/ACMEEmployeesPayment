@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure;
 
-import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayableParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParser;
@@ -18,7 +17,6 @@ import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeSalaryCalculatorTest {
 
@@ -34,7 +32,8 @@ class EmployeeSalaryCalculatorTest {
         employeePaySheetParser = new EmployeePaySheetParser(payableParser::parse);
         employeeSalaryCalculatorUnderTest = new EmployeeSalaryCalculator(employeePaySheetParser::parseEmployeePaySheet);
         linesToRead = Stream.of(ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00,
-                RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00)
+                RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
+                JUANMA_MO_09_00_12_00_TU_09_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00)
                 .collect(Collectors.toCollection(ArrayDeque::new));
         outputs = new ArrayList<>();
     }
@@ -45,6 +44,8 @@ class EmployeeSalaryCalculatorTest {
                 .isTrue();
         employeeSalaryCalculatorUnderTest.calculateSalary(linesToRead::poll, outputs::add);
         assertThat(outputs)
-                .contains(THE_AMOUNT_TO_PAY_ASTRID_IS_85_USD, THE_AMOUNT_TO_PAY_RENE_IS_215_USD);
+                .contains(THE_AMOUNT_TO_PAY_ASTRID_IS_85_USD,
+                        THE_AMOUNT_TO_PAY_RENE_IS_215_USD,
+                        THE_AMOUNT_TO_PAY_JUANMA_IS_245_USD);
     }
 }
