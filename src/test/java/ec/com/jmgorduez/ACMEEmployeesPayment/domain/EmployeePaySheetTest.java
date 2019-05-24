@@ -5,6 +5,9 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalTime;
+import java.util.function.BiFunction;
+
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._09_00;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,10 +25,12 @@ class EmployeePaySheetTest {
 
     @Test
     void payment() {
-        employeePaySheetUnderTest.addWorkingTime(new WorkingTime(_09_00, _11_30, TestDataGenerator::numberOfHours,
-                TestDataGenerator::_15_USD_Per_Hours));
-        employeePaySheetUnderTest.addWorkingTime(new WorkingTime(_09_00, _11_30, TestDataGenerator::numberOfHours,
-                TestDataGenerator::_20_USD_Per_Hours));
+        IPayable workingTime = mockWorkingTime();
+        when(workingTime.payment()).thenReturn(_37_USD_50_c);
+        employeePaySheetUnderTest.addWorkingTime(workingTime);
+        workingTime = mockWorkingTime();
+        when(workingTime.payment()).thenReturn(_50_USD);
+        employeePaySheetUnderTest.addWorkingTime(workingTime);
         assertThat(employeePaySheetUnderTest.payment())
                 .isEqualByComparingTo(_87_USD_50_c);
     }
@@ -50,6 +55,15 @@ class EmployeePaySheetTest {
         IPayable workingTime = mockWorkingTime();
         employeePaySheetUnderTest.addWorkingTime(workingTime);
         verify(workingTime, times(ONE)).setBasicUnitOfTime(any());
+    }
+
+    @Test
+    void setBasicUnitOfTime(){
+        BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected
+                = TestDataGenerator::numberOfHours;
+        employeePaySheetUnderTest.setBasicUnitOfTime(getBasicUnitOfTimeExpected);
+        assertThat(employeePaySheetUnderTest.getBasicUnitOfTime)
+                .isEqualTo(getBasicUnitOfTimeExpected);
     }
 
 

@@ -1,5 +1,6 @@
-package ec.com.jmgorduez.ACMEEmployeesPayment;
+package ec.com.jmgorduez.ACMEEmployeesPayment.it;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.ACMEEmployeesPayment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,6 @@ import java.io.*;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static java.util.stream.Stream.of;
