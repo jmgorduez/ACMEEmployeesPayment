@@ -44,6 +44,6 @@ public class WorkingTime implements IWorkingTime {
 
     @Override
     public void setPaymentStrategy(Function<Float, Double> getPaymentStrategy) {
-
+        this.getPaymentStrategy = getPaymentStrategy;
     }
 }
