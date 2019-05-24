@@ -30,7 +30,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
     @Override
     public void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime) {
-
+        this.getBasicUnitOfTime = getBasicUnitOfTime;
     }
 
     @Override
