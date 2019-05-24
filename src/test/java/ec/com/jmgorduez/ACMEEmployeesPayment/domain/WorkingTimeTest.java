@@ -1,21 +1,25 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
-import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._09_00;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WorkingTimeTest {
 
     private WorkingTime workingTimeUnderTest;
+
+    @BeforeEach
+    void setUp(){
+        workingTimeUnderTest = new WorkingTime(_09_00, _12_00);
+    }
 
     @Test
     void payment() {
@@ -35,15 +39,17 @@ class WorkingTimeTest {
 
     @Test
     void setBasicUnitOfTime(){
-        workingTimeUnderTest = new WorkingTime(_09_00, _12_00);
-        workingTimeUnderTest.setBasicUnitOfTime(TestDataGenerator::numberOfHours);
         BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected = TestDataGenerator::numberOfHours;
+        workingTimeUnderTest.setBasicUnitOfTime(getBasicUnitOfTimeExpected);
         assertThat(workingTimeUnderTest.getBasicUnitOfTime)
-                .isEqualToComparingFieldByField(getBasicUnitOfTimeExpected);
+                .isEqualTo(getBasicUnitOfTimeExpected);
     }
 
     @Test
     void setPaymentStrategy(){
-
+        Function<Float,Double> getPaymentStrategyExpected = TestDataGenerator::_15_USD_Per_Hours;
+        workingTimeUnderTest.setPaymentStrategy(getPaymentStrategyExpected);
+        assertThat(workingTimeUnderTest.getPaymentStrategy)
+                .isEqualTo(getPaymentStrategyExpected);
     }
 }

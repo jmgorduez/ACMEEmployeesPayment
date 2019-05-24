@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
 
 import java.time.LocalTime;
@@ -15,27 +14,27 @@ public class WorkingTime implements IWorkingTime {
     private LocalTime startTime;
     private LocalTime endTime;
     BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
-    Function<Float, Double> paymentStrategy;
+    Function<Float, Double> getPaymentStrategy;
 
     public WorkingTime(LocalTime startTime, LocalTime endTime,
                        BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime,
-                       Function<Float, Double> paymentStrategy) {
+                       Function<Float, Double> getPaymentStrategy) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.getBasicUnitOfTime = getBasicUnitOfTime;
-        this.paymentStrategy = paymentStrategy;
+        this.getPaymentStrategy = getPaymentStrategy;
     }
 
     public WorkingTime(LocalTime startTime, LocalTime endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.getBasicUnitOfTime = (start, end) -> start.until(end, MINUTES) / _60;
-        this.paymentStrategy = Float::doubleValue;
+        this.getPaymentStrategy = Float::doubleValue;
     }
 
     @Override
     public Double payment() {
-        return paymentStrategy.apply(getBasicUnitOfTime.apply(startTime, endTime));
+        return getPaymentStrategy.apply(getBasicUnitOfTime.apply(startTime, endTime));
     }
 
     @Override
@@ -44,7 +43,7 @@ public class WorkingTime implements IWorkingTime {
     }
 
     @Override
-    public void setPaymentStrategy(Function<Float, Double> paymentStrategy) {
+    public void setPaymentStrategy(Function<Float, Double> getPaymentStrategy) {
 
     }
 }

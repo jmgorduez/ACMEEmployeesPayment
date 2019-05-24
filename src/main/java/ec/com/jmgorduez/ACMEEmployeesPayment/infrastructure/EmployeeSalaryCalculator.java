@@ -16,11 +16,11 @@ import static java.util.Optional.ofNullable;
 
 public class EmployeeSalaryCalculator implements IEmployeeSalaryCalculator {
 
-    private Function<String, IEmployeePaySheet> parseEmployeePaySheet;
+    private Function<String, IEmployeePaySheet> getParseEmployeePaySheet;
     private DecimalFormat decimalFormat = new DecimalFormat();
 
-    public EmployeeSalaryCalculator(Function<String, IEmployeePaySheet> parseEmployeePaySheet) {
-        this.parseEmployeePaySheet = parseEmployeePaySheet;
+    public EmployeeSalaryCalculator(Function<String, IEmployeePaySheet> getParseEmployeePaySheet) {
+        this.getParseEmployeePaySheet = getParseEmployeePaySheet;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class EmployeeSalaryCalculator implements IEmployeeSalaryCalculator {
             while (true) {
                 lines.add(
                         ofNullable(readLine.get())
-                                .map(parseEmployeePaySheet)
+                                .map(getParseEmployeePaySheet)
                                 .orElseThrow(RuntimeException::new));
             }
         } catch (RuntimeException error) {

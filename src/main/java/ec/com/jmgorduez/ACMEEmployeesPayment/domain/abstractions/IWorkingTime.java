@@ -8,5 +8,5 @@ public interface IWorkingTime extends IPayable {
 
     void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime);
 
-    void setPaymentStrategy(Function<Float, Double> paymentStrategy);
+    void setPaymentStrategy(Function<Float, Double> getPaymentStrategy);
 }
