@@ -3,6 +3,11 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalTime;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._09_00;
@@ -30,7 +35,10 @@ class WorkingTimeTest {
 
     @Test
     void setBasicUnitOfTime(){
-
+        workingTimeUnderTest.setBasicUnitOfTime(TestDataGenerator::numberOfHours);
+        BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected = TestDataGenerator::numberOfHours;
+        assertThat(workingTimeUnderTest.getBasicUnitOfTime)
+                .isEqualTo(getBasicUnitOfTimeExpected);
     }
 
     @Test

@@ -11,8 +11,8 @@ public class WorkingTime implements IWorkingTime {
 
     private LocalTime startTime;
     private LocalTime endTime;
-    private BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
-    private Function<Float, Double> paymentStrategy;
+    BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
+    Function<Float, Double> paymentStrategy;
 
     public WorkingTime(LocalTime startTime, LocalTime endTime,
                        BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime,
