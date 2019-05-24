@@ -3,7 +3,7 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.EmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 
 import java.time.LocalTime;
 import java.util.function.BiFunction;
@@ -14,10 +14,10 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 
 public class EmployeePaySheetParser implements IEmployeePaySheetParser {
 
-    private Function<String, IWorkingTime> getPayableItem;
+    private Function<String, IPayable> getPayableItem;
     private BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
 
-    public EmployeePaySheetParser(Function<String, IWorkingTime> getPayableItem,
+    public EmployeePaySheetParser(Function<String, IPayable> getPayableItem,
                                   BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime){
         this.getPayableItem = getPayableItem;
         this.getBasicUnitOfTime = getBasicUnitOfTime;

@@ -1,6 +1,6 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 
 import java.time.LocalTime;
 import java.util.function.BiFunction;
@@ -9,7 +9,7 @@ import java.util.function.Function;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._60;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
-public class WorkingTime implements IWorkingTime {
+public class WorkingTime implements IPayable {
 
     private LocalTime startTime;
     private LocalTime endTime;
@@ -40,10 +40,5 @@ public class WorkingTime implements IWorkingTime {
     @Override
     public void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime) {
         this.getBasicUnitOfTime = getBasicUnitOfTime;
-    }
-
-    @Override
-    public void setPaymentStrategy(Function<Float, Double> getPaymentStrategy) {
-        this.getPaymentStrategy = getPaymentStrategy;
     }
 }

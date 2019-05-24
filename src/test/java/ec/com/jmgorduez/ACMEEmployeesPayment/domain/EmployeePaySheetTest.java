@@ -1,7 +1,7 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,20 +47,13 @@ class EmployeePaySheetTest {
 
     @Test
     void addWorkingTimeVerifyIfSetBasicUnitOfTimeIsCalled() {
-        IWorkingTime workingTime = mockWorkingTime();
+        IPayable workingTime = mockWorkingTime();
         employeePaySheetUnderTest.addWorkingTime(workingTime);
         verify(workingTime, times(ONE)).setBasicUnitOfTime(any());
     }
 
-    @Test
-    void addWorkingTimeVerifyIfSetPaymentStrategyIsCalled() {
-        IWorkingTime workingTime = mockWorkingTime();
-        employeePaySheetUnderTest.addWorkingTime(workingTime);
-        verify(workingTime, times(ONE)).setPaymentStrategy(any());
-    }
 
-
-    private IWorkingTime mockWorkingTime(){
-        return mock(IWorkingTime.class);
+    private IPayable mockWorkingTime(){
+        return mock(IPayable.class);
     }
 }

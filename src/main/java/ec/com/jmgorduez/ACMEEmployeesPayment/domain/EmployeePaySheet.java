@@ -2,19 +2,17 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class EmployeePaySheet implements IEmployeePaySheet {
 
-    List<IWorkingTime> workingTimes;
+    List<IPayable> workingTimes;
     private final String employeeName;
-    private BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
+    BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
 
     public EmployeePaySheet(String employeeName,
                             BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime){
@@ -31,12 +29,17 @@ public class EmployeePaySheet implements IEmployeePaySheet {
     }
 
     @Override
+    public void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime) {
+
+    }
+
+    @Override
     public String employeeName() {
         return employeeName;
     }
 
     @Override
-    public void addWorkingTime(IWorkingTime workingTime) {
+    public void addWorkingTime(IPayable workingTime) {
         workingTime.setBasicUnitOfTime(getBasicUnitOfTime);
         workingTimes.add(workingTime);
     }

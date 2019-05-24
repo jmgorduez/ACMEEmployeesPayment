@@ -2,7 +2,6 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.WorkingTime;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTimeParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDay;
@@ -24,7 +23,7 @@ public class WorkingTimeParser implements IWorkingTimeParser {
     }
 
     @Override
-    public IWorkingTime parse(String value) {
+    public IPayable parse(String value) {
         LocalTime start = getStart(value);
         LocalTime end = getEnd(value);
         PaymentStrategy paymentStrategy = getWeekDay(value).paymentStrategy(start, end);

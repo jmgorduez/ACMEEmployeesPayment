@@ -3,7 +3,6 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.EmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class EmployeePaySheetParserTest {
 
     private EmployeePaySheetParser employeePaySheetParserUnderTest;
-    private Queue<IWorkingTime> payables;
+    private Queue<IPayable> payables;
 
     @BeforeEach
     void setUp() {
@@ -51,7 +50,7 @@ class EmployeePaySheetParserTest {
                 .contains(MO_10_00_12_00_STRING, TH_12_00_14_00_STRING, SU_20_00_21_00_STRING);
     }
 
-    private IWorkingTime getWorkingTime(String value) {
+    private IPayable getWorkingTime(String value) {
         return payables.poll();
     }
 }

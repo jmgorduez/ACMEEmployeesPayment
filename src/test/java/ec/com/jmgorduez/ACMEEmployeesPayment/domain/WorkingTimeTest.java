@@ -44,12 +44,4 @@ class WorkingTimeTest {
         assertThat(workingTimeUnderTest.getBasicUnitOfTime)
                 .isEqualTo(getBasicUnitOfTimeExpected);
     }
-
-    @Test
-    void setPaymentStrategy(){
-        Function<Float,Double> getPaymentStrategyExpected = TestDataGenerator::_15_USD_Per_Hours;
-        workingTimeUnderTest.setPaymentStrategy(getPaymentStrategyExpected);
-        assertThat(workingTimeUnderTest.getPaymentStrategy)
-                .isEqualTo(getPaymentStrategyExpected);
-    }
 }
