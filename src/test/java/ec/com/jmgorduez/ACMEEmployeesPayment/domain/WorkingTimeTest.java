@@ -35,10 +35,11 @@ class WorkingTimeTest {
 
     @Test
     void setBasicUnitOfTime(){
+        workingTimeUnderTest = new WorkingTime(_09_00, _12_00);
         workingTimeUnderTest.setBasicUnitOfTime(TestDataGenerator::numberOfHours);
         BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected = TestDataGenerator::numberOfHours;
         assertThat(workingTimeUnderTest.getBasicUnitOfTime)
-                .isEqualTo(getBasicUnitOfTimeExpected);
+                .isEqualToComparingFieldByField(getBasicUnitOfTimeExpected);
     }
 
     @Test
