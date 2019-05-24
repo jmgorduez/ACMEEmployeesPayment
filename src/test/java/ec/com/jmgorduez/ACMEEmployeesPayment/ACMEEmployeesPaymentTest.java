@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
+import static java.util.stream.Stream.of;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ACMEEmployeesPaymentTest {
@@ -23,11 +24,10 @@ class ACMEEmployeesPaymentTest {
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
-        linesExpected = Stream
-                .of(RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
-                        ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00,
-                        JUANMA_MO_09_00_12_00_TU_09_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
-                        EMPTY_STRING)
+        linesExpected = of(RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
+                ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00,
+                JUANMA_MO_09_00_12_00_TU_09_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
+                EMPTY_STRING)
                 .collect(Collectors.toCollection(ArrayDeque::new));
     }
 
