@@ -11,8 +11,15 @@ import java.util.stream.Stream;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 
 public class EmployeePaySheetParser implements IEmployeePaySheetParser {
+
+    private Function<String, IPayable> getPayableItem;
+
+    public EmployeePaySheetParser(Function<String, IPayable> getPayableItem){
+        this.getPayableItem = getPayableItem;
+    }
+
     @Override
-    public IEmployeePaySheet parseEmployeePaySheet(String line, Function<String, IPayable> getPayableItem) {
+    public IEmployeePaySheet parseEmployeePaySheet(String line) {
         IEmployeePaySheet result = new EmployeePaySheet(getName(line));
         getWorkingTimes(line)
                 .map(getPayableItem)

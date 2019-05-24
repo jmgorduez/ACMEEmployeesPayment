@@ -26,6 +26,10 @@ public class Constants {
     public static final String SA = "SA";
     public static final String SU = "SU";
 
+    public static final String THE_AMOUNT_TO_PAY_EMPLOYEE_IS_SALARY_USD = "The amount to pay EMPLOYEE is: SALARY USD";
+    public static final String EMPLOYEE = "EMPLOYEE";
+    public static final String SALARY = "SALARY";
+
     public static final LocalTime _00_00 = LocalTime.parse("00:00");
     public static final LocalTime _09_00 = LocalTime.parse("09:00");
     public static final LocalTime _18_00 = LocalTime.parse("18:00");

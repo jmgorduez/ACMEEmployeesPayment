@@ -1,9 +1,14 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayableParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalTime;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +23,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeeSalaryCalculatorTest {
 
     private EmployeeSalaryCalculator employeeSalaryCalculatorUnderTest;
+    private IEmployeePaySheetParser employeePaySheetParser;
+    private IPayableParser payableParser;
     private Queue<String> linesToRead;
     private List<String> outputs;
 
     @BeforeEach
     void setUp() {
-        employeeSalaryCalculatorUnderTest = new EmployeeSalaryCalculator();
+        payableParser = new WorkingTimeParser(LocalTime::parse);
+        employeePaySheetParser = new EmployeePaySheetParser(payableParser::parse);
+        employeeSalaryCalculatorUnderTest = new EmployeeSalaryCalculator(employeePaySheetParser::parseEmployeePaySheet);
         linesToRead = Stream.of(ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00,
                 RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00)
                 .collect(Collectors.toCollection(ArrayDeque::new));

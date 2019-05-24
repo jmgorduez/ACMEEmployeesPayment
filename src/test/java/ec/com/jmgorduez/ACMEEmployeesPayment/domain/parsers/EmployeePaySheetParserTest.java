@@ -21,7 +21,7 @@ class EmployeePaySheetParserTest {
 
     @BeforeEach
     void setUp() {
-        this.employeePaySheetParserUnderTest = new EmployeePaySheetParser();
+        this.employeePaySheetParserUnderTest = new EmployeePaySheetParser(this::getWorkingTime);
         this.payables = Stream.of(MO_10_00_12_00, TH_12_00_14_00, SU_20_00_21_00)
                 .collect(Collectors.toCollection(ArrayDeque::new));
     }
@@ -31,7 +31,7 @@ class EmployeePaySheetParserTest {
         EmployeePaySheet employeePaySheetExpected = new EmployeePaySheet(ASTRID);
         payables.stream().forEach(employeePaySheetExpected::addPayableItem);
         assertThat(employeePaySheetParserUnderTest.parseEmployeePaySheet(
-                ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00, this::getWorkingTime))
+                ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
                 .isEqualToComparingFieldByField(employeePaySheetExpected);
     }
 
