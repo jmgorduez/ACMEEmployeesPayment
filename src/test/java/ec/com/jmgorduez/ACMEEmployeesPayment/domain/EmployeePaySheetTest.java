@@ -20,9 +20,9 @@ class EmployeePaySheetTest {
 
     @Test
     void payment() {
-        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, HOUR::basicUnitOfTime,
+        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, TestDataGenerator::numberOfHours,
                 TestDataGenerator::_15_USD_Per_Hours));
-        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, HOUR::basicUnitOfTime,
+        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, TestDataGenerator::numberOfHours,
                 TestDataGenerator::_20_USD_Per_Hours));
         assertThat(employeePaySheetUnderTest.payment())
                 .isEqualByComparingTo(_87_USD_50_c);
@@ -38,7 +38,7 @@ class EmployeePaySheetTest {
     void addPayableItem() {
         assertThat(employeePaySheetUnderTest.workingTimes.isEmpty())
                 .isTrue();
-        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, HOUR::basicUnitOfTime,
+        employeePaySheetUnderTest.addPayableItem(new WorkingTime(_09_00, _11_30, TestDataGenerator::numberOfHours,
                 TestDataGenerator::_15_USD_Per_Hours));
         assertThat(employeePaySheetUnderTest.workingTimes.size())
                 .isEqualTo(ONE);

@@ -6,8 +6,8 @@ import java.time.LocalTime;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy._15_USD_PER_UNIT_OF_TIME;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._15;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._20;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
+import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class TestDataGenerator {
 
@@ -70,5 +70,9 @@ public class TestDataGenerator {
 
     public static Double _20_USD_Per_Hours(Float hours){
         return _20*hours.doubleValue();
+    }
+
+    public static Float numberOfHours(LocalTime start, LocalTime end){
+        return start.until(end, MINUTES) / _60;
     }
 }

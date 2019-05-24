@@ -14,15 +14,15 @@ class WorkingTimeTest {
 
     @Test
     void payment() {
-        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, HOUR::basicUnitOfTime,
+        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, TestDataGenerator::numberOfHours,
                 TestDataGenerator::_15_USD_Per_Hours);
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_45_USD);
-        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, HOUR::basicUnitOfTime,
+        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, TestDataGenerator::numberOfHours,
                 TestDataGenerator::_20_USD_Per_Hours);
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_60_USD);
-        workingTimeUnderTest = new WorkingTime(_09_00, _11_30, HOUR::basicUnitOfTime,
+        workingTimeUnderTest = new WorkingTime(_09_00, _11_30, TestDataGenerator::numberOfHours,
                 TestDataGenerator::_20_USD_Per_Hours);
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_50_USD);
