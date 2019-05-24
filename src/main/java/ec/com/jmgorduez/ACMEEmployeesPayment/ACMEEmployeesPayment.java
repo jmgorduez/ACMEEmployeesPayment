@@ -2,7 +2,9 @@ package ec.com.jmgorduez.ACMEEmployeesPayment;
 
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeeSalaryCalculatorFactory;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayableParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.factory.EmployeeSalaryCalculatorFactory;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.EmployeeSalaryCalculator;
@@ -24,14 +26,9 @@ import static java.util.Optional.of;
 
 public class ACMEEmployeesPayment {
 
-    private static IPayableParser payableParser = new WorkingTimeParser(LocalTime::parse);
-    private static IEmployeePaySheetParser employeePaySheetParser = new EmployeePaySheetParser(payableParser::parse);
-    private static IEmployeeSalaryCalculator employeeSalaryCalculator
-            = new EmployeeSalaryCalculator(employeePaySheetParser::parseEmployeePaySheet);
-
     public static void main(String[] args) {
         try (BufferedReader bufferedReader = bufferedReader(args).get()) {
-            employeeSalaryCalculator
+            employeeSalaryCalculator()
                     .calculateSalary(unchecked(bufferedReader::readLine), System.out::println);
         } catch (IOException | NoSuchElementException e) {
             e.printStackTrace();
@@ -43,5 +40,10 @@ public class ACMEEmployeesPayment {
             return empty();
         }
         return of(new BufferedReader(new FileReader(args[ZERO])));
+    }
+
+    private static IEmployeeSalaryCalculator employeeSalaryCalculator() {
+        return new EmployeeSalaryCalculatorFactory()
+                .employeeSalaryCalculator();
     }
 }
