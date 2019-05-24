@@ -52,6 +52,14 @@ class EmployeePaySheetTest {
         verify(workingTime, times(ONE)).setBasicUnitOfTime(any());
     }
 
+    @Test
+    void addWorkingTimeVerifyIfSetPaymentStrategyIsCalled() {
+        IWorkingTime workingTime = mockWorkingTime();
+        employeePaySheetUnderTest.addWorkingTime(workingTime);
+        verify(workingTime, times(ONE)).setPaymentStrategy(any());
+    }
+
+
     private IWorkingTime mockWorkingTime(){
         return mock(IWorkingTime.class);
     }
