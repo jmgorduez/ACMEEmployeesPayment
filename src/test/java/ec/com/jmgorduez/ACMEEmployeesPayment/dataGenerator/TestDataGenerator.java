@@ -64,6 +64,7 @@ public class TestDataGenerator {
 
     public static final String GET_BASIC_UNIT_OF_TIME = "getBasicUnitOfTime";
     public static final String PAYMENT_STRATEGY = "paymentStrategy";
+    public static final String PARSE_EMPLOYEE_PAY_SHEET = "parseEmployeePaySheet";
 
     public static Double _15_USD_Per_Hours(Float hours){
         return _15*hours.doubleValue();
