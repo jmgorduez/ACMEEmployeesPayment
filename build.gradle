@@ -26,3 +26,27 @@ test {
 
 test.finalizedBy jacocoTestReport
 check.dependsOn jacocoTestCoverageVerification
+
+test {
+	useJUnitPlatform()
+	testLogging {
+		events 'passed', 'skipped', 'failed'
+		exceptionFormat = 'full'
+	}
+	exclude '**/ec/com/jmgorduez/ACMEEmployeesPayment/ACMEEmployeesPaymentTest'
+}
+
+task integrationTest(type: Test) {
+	useJUnitPlatform()
+	testLogging {
+		events 'passed', 'skipped', 'failed'
+		exceptionFormat = 'full'
+	}
+	include '**/ec/com/jmgorduez/ACMEEmployeesPayment/ACMEEmployeesPaymentTest'
+}
+
+jacocoTestReport {
+	reports {
+		html.destination file('build/jacocoHtml')
+	}
+}

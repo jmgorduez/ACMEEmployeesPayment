@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.ACMEEmployeesPayment.it;
+package ec.com.jmgorduez.ACMEEmployeesPayment;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.ACMEEmployeesPayment;
 import org.junit.jupiter.api.AfterEach;

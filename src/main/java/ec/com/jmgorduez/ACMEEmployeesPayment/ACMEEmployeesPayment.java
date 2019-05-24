@@ -4,10 +4,7 @@ package ec.com.jmgorduez.ACMEEmployeesPayment;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.factory.EmployeeSalaryCalculatorFactory;
 import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.abstractions.IEmployeeSalaryCalculator;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -32,7 +29,7 @@ public class ACMEEmployeesPayment {
         if (asList(args).isEmpty()) {
             return empty();
         }
-        return of(new BufferedReader(new FileReader(args[ZERO])));
+        return of(new BufferedReader(new InputStreamReader(ACMEEmployeesPayment.class.getResourceAsStream(args[ZERO]))));
     }
 
     private static IEmployeeSalaryCalculator employeeSalaryCalculator() {

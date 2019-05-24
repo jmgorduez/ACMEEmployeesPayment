@@ -2,6 +2,7 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.WorkingTime;
 
+import java.io.File;
 import java.time.LocalTime;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy._15_USD_PER_UNIT_OF_TIME;
@@ -11,8 +12,7 @@ import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class TestDataGenerator {
 
-    public static final String INPUT_FILE_PATH = "/home/jm/projects/java/ACMEEmployesPayment/inputFile/";
-    //public static final String INPUT_FILE_PATH = "C:\\Users\\JuanMa\\projects\\java\\ACMEEmployesPayment\\inputFile\\";
+    public static final String INPUT_FILE_PATH = File.separator.concat("inputFile/");
     public static final String INPUT_FILE_NAME = INPUT_FILE_PATH.concat("input.txt");
 
     public static final Integer ONE = 1;
@@ -20,6 +20,7 @@ public class TestDataGenerator {
     public static final Float _2_HOURS_30_MINUTES = 2.5F;
     public static final Float _3_HOURS = 3F;
 
+    public static final Double _37_USD_50_c = 37.5D;
     public static final Double _45_USD = 45D;
     public static final Double _50_USD = 50D;
     public static final Double _60_USD = 60D;
@@ -64,15 +65,15 @@ public class TestDataGenerator {
     public static final String PAYMENT_STRATEGY = "getPaymentStrategy";
     public static final String PARSE_EMPLOYEE_PAY_SHEET = "getParseEmployeePaySheet";
 
-    public static Double _15_USD_Per_Hours(Float hours){
-        return _15*hours.doubleValue();
+    public static Double _15_USD_Per_Hours(Float hours) {
+        return _15 * hours.doubleValue();
     }
 
-    public static Double _20_USD_Per_Hours(Float hours){
-        return _20*hours.doubleValue();
+    public static Double _20_USD_Per_Hours(Float hours) {
+        return _20 * hours.doubleValue();
     }
 
-    public static Float numberOfHours(LocalTime start, LocalTime end){
+    public static Float numberOfHours(LocalTime start, LocalTime end) {
         return start.until(end, MINUTES) / _60;
     }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeePaySheetParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ACMEEmployeesPayment</a> &gt; <a href="index.source.html" class="el_package">ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers</a> &gt; <span class="el_source">EmployeePaySheetParser.java</span></div><h1>EmployeePaySheetParser.java</h1><pre class="source lang-java linenums">package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
+
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.EmployeePaySheet;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
+
+import java.time.LocalTime;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
+
+public class EmployeePaySheetParser implements IEmployeePaySheetParser {
+
+    private Function&lt;String, IPayable&gt; getPayableItem;
+    private BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime;
+
+    public EmployeePaySheetParser(Function&lt;String, IPayable&gt; getPayableItem,
+<span class="fc" id="L21">                                  BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime){</span>
+<span class="fc" id="L22">        this.getPayableItem = getPayableItem;</span>
+<span class="fc" id="L23">        this.getBasicUnitOfTime = getBasicUnitOfTime;</span>
+<span class="fc" id="L24">    }</span>
+
+    @Override
+    public IEmployeePaySheet parseEmployeePaySheet(String line) {
+<span class="fc" id="L28">        IEmployeePaySheet result = new EmployeePaySheet(getName(line), getBasicUnitOfTime);</span>
+<span class="fc" id="L29">        getWorkingTimes(line)</span>
+<span class="fc" id="L30">                .map(getPayableItem)</span>
+<span class="fc" id="L31">                .forEach(result::addWorkingTime);</span>
+<span class="fc" id="L32">        return result;</span>
+    }
+
+    String getName(String line){
+<span class="fc" id="L36">        return line.split(ASSIGNMENT_CHARACTER)[ZERO];</span>
+    }
+
+    Stream&lt;String&gt; getWorkingTimes(String line){
+<span class="fc" id="L40">        Integer workingTimesStartIndex = line.indexOf(ASSIGNMENT_CHARACTER)+ ONE;</span>
+<span class="fc" id="L41">        return Stream.of(line.substring(workingTimesStartIndex).split(COMMA_CHARACTER));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
