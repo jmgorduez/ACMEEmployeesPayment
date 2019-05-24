@@ -1,5 +1,6 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain.factory;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.EmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.EmployeeSalaryCalculator;
@@ -27,6 +28,6 @@ class EmployeeSalaryCalculatorFactoryTest {
     }
 
     private IEmployeePaySheet employeePaySheetParser(String value) {
-        return new EmployeePaySheet(ASTRID);
+        return new EmployeePaySheet(ASTRID, TestDataGenerator::numberOfHours);
     }
 }

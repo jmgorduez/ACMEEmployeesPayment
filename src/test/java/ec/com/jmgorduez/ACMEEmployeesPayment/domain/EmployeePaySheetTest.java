@@ -16,7 +16,8 @@ class EmployeePaySheetTest {
 
     @BeforeEach
     void setUp() {
-        employeePaySheetUnderTest = new EmployeePaySheet(ASTRID);
+        employeePaySheetUnderTest = new EmployeePaySheet(ASTRID,
+                TestDataGenerator::numberOfHours);
     }
 
     @Test
@@ -48,7 +49,7 @@ class EmployeePaySheetTest {
     void addWorkingTimeVerifyIfSetBasicUnitOfTimeIsCalled() {
         IWorkingTime workingTime = mockWorkingTime();
         employeePaySheetUnderTest.addWorkingTime(workingTime);
-        verify(workingTime, times(ONE)).setBasicUnitOfTime(TestDataGenerator::numberOfHours);
+        verify(workingTime, times(ONE)).setBasicUnitOfTime(any());
     }
 
     private IWorkingTime mockWorkingTime(){

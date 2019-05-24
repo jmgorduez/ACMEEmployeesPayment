@@ -14,10 +14,13 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
     List<IWorkingTime> workingTimes;
     private final String employeeName;
+    private BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
 
-    public EmployeePaySheet(String employeeName){
+    public EmployeePaySheet(String employeeName,
+                            BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime){
         this.employeeName = employeeName;
         workingTimes = new ArrayList<>();
+        this.getBasicUnitOfTime = getBasicUnitOfTime;
     }
 
     @Override
@@ -34,6 +37,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
     @Override
     public void addWorkingTime(IWorkingTime workingTime) {
+        workingTime.setBasicUnitOfTime(getBasicUnitOfTime);
         workingTimes.add(workingTime);
     }
 }

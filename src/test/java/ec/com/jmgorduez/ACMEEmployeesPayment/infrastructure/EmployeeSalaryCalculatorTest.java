@@ -1,5 +1,6 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTimeParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParser;
@@ -29,7 +30,8 @@ class EmployeeSalaryCalculatorTest {
     @BeforeEach
     void setUp() {
         payableParser = new WorkingTimeParser(LocalTime::parse);
-        employeePaySheetParser = new EmployeePaySheetParser(payableParser::parse);
+        employeePaySheetParser = new EmployeePaySheetParser(payableParser::parse,
+                TestDataGenerator::numberOfHours);
         employeeSalaryCalculatorUnderTest = new EmployeeSalaryCalculator(employeePaySheetParser::parseEmployeePaySheet);
         linesToRead = Stream.of(ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00,
                 RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
