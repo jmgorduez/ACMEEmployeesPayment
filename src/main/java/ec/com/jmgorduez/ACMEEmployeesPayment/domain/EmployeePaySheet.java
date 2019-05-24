@@ -2,13 +2,17 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class EmployeePaySheet implements IEmployeePaySheet {
 
-    List<IPayable> workingTimes;
+    List<IWorkingTime> workingTimes;
     private final String employeeName;
 
     public EmployeePaySheet(String employeeName){
@@ -29,7 +33,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
     }
 
     @Override
-    public void addPayableItem(IPayable workingTime) {
+    public void addWorkingTime(IWorkingTime workingTime) {
         workingTimes.add(workingTime);
     }
 }

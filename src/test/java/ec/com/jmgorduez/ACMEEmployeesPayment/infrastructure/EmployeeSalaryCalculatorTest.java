@@ -1,7 +1,7 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayableParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTimeParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParser;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ class EmployeeSalaryCalculatorTest {
 
     private EmployeeSalaryCalculator employeeSalaryCalculatorUnderTest;
     private IEmployeePaySheetParser employeePaySheetParser;
-    private IPayableParser payableParser;
+    private IWorkingTimeParser payableParser;
     private Queue<String> linesToRead;
     private List<String> outputs;
 

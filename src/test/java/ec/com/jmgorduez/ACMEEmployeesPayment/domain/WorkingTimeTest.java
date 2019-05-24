@@ -27,4 +27,14 @@ class WorkingTimeTest {
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_50_USD);
     }
+
+    @Test
+    void setBasicUnitOfTime(){
+
+    }
+
+    @Test
+    void setPaymentStrategy(){
+
+    }
 }

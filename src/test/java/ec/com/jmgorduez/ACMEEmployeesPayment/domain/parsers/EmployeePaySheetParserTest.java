@@ -2,7 +2,7 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.EmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
-import ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParser;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class EmployeePaySheetParserTest {
 
     private EmployeePaySheetParser employeePaySheetParserUnderTest;
-    private Queue<IPayable> payables;
+    private Queue<IWorkingTime> payables;
 
     @BeforeEach
     void setUp() {
@@ -29,7 +29,7 @@ class EmployeePaySheetParserTest {
     @Test
     void parseEmployeePaySheet() {
         EmployeePaySheet employeePaySheetExpected = new EmployeePaySheet(ASTRID);
-        payables.stream().forEach(employeePaySheetExpected::addPayableItem);
+        payables.stream().forEach(employeePaySheetExpected::addWorkingTime);
         assertThat(employeePaySheetParserUnderTest.parseEmployeePaySheet(
                 ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
                 .isEqualToComparingFieldByField(employeePaySheetExpected);
@@ -47,7 +47,7 @@ class EmployeePaySheetParserTest {
                 .contains(MO_10_00_12_00_STRING, TH_12_00_14_00_STRING, SU_20_00_21_00_STRING);
     }
 
-    private IPayable getWorkingTime(String value) {
+    private IWorkingTime getWorkingTime(String value) {
         return payables.poll();
     }
 }

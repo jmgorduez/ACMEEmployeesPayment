@@ -1,12 +1,13 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IWorkingTime;
 
 import java.time.LocalTime;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class WorkingTime implements IPayable {
+public class WorkingTime implements IWorkingTime {
 
     private LocalTime startTime;
     private LocalTime endTime;
@@ -25,5 +26,15 @@ public class WorkingTime implements IPayable {
     @Override
     public Double payment() {
         return paymentStrategy.apply(getBasicUnitOfTime.apply(startTime, endTime));
+    }
+
+    @Override
+    public void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime) {
+
+    }
+
+    @Override
+    public void setPaymentStrategy(Function<Float, Double> paymentStrategy) {
+
     }
 }
