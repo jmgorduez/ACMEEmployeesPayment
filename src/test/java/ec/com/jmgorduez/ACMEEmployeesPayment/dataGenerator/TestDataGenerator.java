@@ -57,9 +57,7 @@ public class TestDataGenerator {
     public static final String THE_AMOUNT_TO_PAY_JUANMA_IS_245_USD = "The amount to pay JUANMA is: 245 USD";
 
     public static final String MO_10_00_12_00_STRING = "MO10:00-12:00";
-    public static final String MO_01_00_21_00_STRING = "SU01:00-21:00";
     public static final String TH_12_00_14_00_STRING = "TH12:00-14:00";
-    public static final String TH_19_00_20_00_STRING = "TH19:00-20:00";
     public static final String SU_20_00_21_00_STRING = "SU20:00-21:00";
 
     public static final String GET_BASIC_UNIT_OF_TIME = "getBasicUnitOfTime";
