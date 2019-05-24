@@ -11,6 +11,10 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._20;
 
 public class TestDataGenerator {
 
+    //public static final String INPUT_FILE_PATH = "/home/jm/projects/java/ACMEEmployesPayment/inputFile/";
+    public static final String INPUT_FILE_PATH = "C:\\Users\\JuanMa\\projects\\java\\ACMEEmployesPayment\\inputFile\\";
+    public static final String INPUT_FILE_NAME = INPUT_FILE_PATH.concat("input.txt");
+
     public static final Integer ONE = 1;
 
     public static final Float _2_HOURS_30_MINUTES = 2.5F;
