@@ -4,6 +4,7 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.INPUT_FILE_NAME;
@@ -18,7 +19,7 @@ class ACMEEmployeesPaymentTest {
     }
 
     @Test
-    void bufferedReader() {
+    void bufferedReader() throws FileNotFoundException {
         assertThat(ACMEEmployeesPayment.bufferedReader().isPresent())
                 .isFalse();
         try (BufferedReader bufferedReader
