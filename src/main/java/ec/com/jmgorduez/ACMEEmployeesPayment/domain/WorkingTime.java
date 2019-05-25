@@ -25,11 +25,11 @@ public class WorkingTime implements IPayable {
         this.getPaymentStrategy = getPaymentStrategy;
     }
 
-    public WorkingTime(LocalTime startTime, LocalTime endTime) {
+    public WorkingTime(LocalTime startTime, LocalTime endTime, Function<Float, Double> getPaymentStrategy) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.getBasicUnitOfTime = (start, end) -> start.until(end, MINUTES) / _60;
-        this.getPaymentStrategy = Float::doubleValue;
+        this.getPaymentStrategy = getPaymentStrategy;
     }
 
     @Override

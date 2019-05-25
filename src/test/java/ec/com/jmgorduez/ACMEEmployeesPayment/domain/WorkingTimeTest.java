@@ -18,7 +18,7 @@ class WorkingTimeTest {
 
     @BeforeEach
     void setUp(){
-        workingTimeUnderTest = new WorkingTime(_09_00, _12_00);
+        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, TestDataGenerator::_15_USD_Per_Hours);
     }
 
     @Test

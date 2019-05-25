@@ -30,7 +30,7 @@ class EmployeeSalaryCalculatorTest {
     @BeforeEach
     void setUp() {
         payableParser = new WorkingTimeParser(LocalTime::parse);
-        employeePaySheetParser = new EmployeePaySheetParser(payableParser::parse,
+        employeePaySheetParser = new EmployeePaySheetParser(payableParser::parseWorkingTime,
                 TestDataGenerator::numberOfHours);
         employeeSalaryCalculatorUnderTest = new EmployeeSalaryCalculator(employeePaySheetParser::parseEmployeePaySheet);
         outputs = new ArrayList<>();

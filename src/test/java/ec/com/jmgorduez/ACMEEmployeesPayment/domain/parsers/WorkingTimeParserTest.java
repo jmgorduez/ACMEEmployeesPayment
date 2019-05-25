@@ -1,9 +1,13 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers;
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Queue;
 import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
@@ -30,7 +34,11 @@ class WorkingTimeParserTest {
 
     @Test
     void parseCompactWorkingTime(){
-        assertThat(workingTimeParserUnderTest.parseCompactWorkingTime(RENE_MO_00_00_12_00_TU_10_00_12_00))
-                .contains(MO_00_00_09_00, MO_09_00_12_00, TU_10_00_12_00);
+        Queue<IPayable> result
+                = new ArrayDeque<>(workingTimeParserUnderTest.parseCompactWorkingTime(MO_00_00_12_00_STRING));
+        assertThat(result.poll())
+                .isEqualToIgnoringGivenFields(MO_00_00_09_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+        assertThat(result.poll())
+                .isEqualToIgnoringGivenFields(MO_09_00_12_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
     }
 }
