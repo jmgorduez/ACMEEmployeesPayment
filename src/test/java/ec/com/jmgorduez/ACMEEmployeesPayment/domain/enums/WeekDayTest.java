@@ -74,4 +74,14 @@ class WeekDayTest {
         assertThat(WeekDay.getFirstElement(MONDAY, FRIDAY))
                 .isEqualTo(MONDAY);
     }
+
+    @Test
+    void getValue(){
+        assertThat(MONDAY.getValue())
+                .isEqualTo(MO);
+        assertThat(WEDNESDAY.getValue())
+                .isEqualTo(WE);
+        assertThat(FRIDAY.getValue())
+                .isEqualTo(FR);
+    }
 }
