@@ -36,6 +36,10 @@ public enum WeekDay {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    public String getValue(){
+        return value;
+    }
+
     private static Predicate<WeekDay> isValueEqualTo(String value) {
         return weekDay -> weekDay.value.equals(value);
     }
