@@ -11,6 +11,7 @@ import java.util.Queue;
 import java.util.stream.Collectors;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.MESSAGE_ILLEGAL_FORMAT;
 import static java.util.stream.Stream.of;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -67,7 +68,7 @@ class ACMEEmployeesPaymentTest {
     void mainProcessingAFileWithIllegalFormat() {
         ACMEEmployeesPayment.main(new String[]{INPUT_FILE_NAME_ILLEGAL_FORMAT});
         assertThat(errContent.toString())
-                .isEqualTo(MESSAGE_ILLEGAL_FORMAT);
+                .isEqualTo(MESSAGE_ILLEGAL_FORMAT.concat(System.lineSeparator()));
     }
 
     @Test

@@ -34,4 +34,8 @@ public class Constants {
     public static final LocalTime _09_00 = LocalTime.parse("09:00");
     public static final LocalTime _18_00 = LocalTime.parse("18:00");
     public static final LocalTime _23_59 = LocalTime.parse("23:59");
+
+    public static final String MESSAGE_ILLEGAL_FORMAT
+            = "File with illegal format. The correct format should be 'EMPLOYEE_NAME=WDhh:mm,WDhh:mm,...,WDhh:mm'";
+
 }

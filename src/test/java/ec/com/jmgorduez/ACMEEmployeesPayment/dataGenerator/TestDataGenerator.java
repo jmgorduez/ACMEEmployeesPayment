@@ -82,9 +82,6 @@ public class TestDataGenerator {
     public static final String PAYMENT_STRATEGY = "getPaymentStrategy";
     public static final String PARSE_EMPLOYEE_PAY_SHEET = "getParseEmployeePaySheet";
 
-    public static final String MESSAGE_ILLEGAL_FORMAT
-            = "File with illegal format. The correct format should be 'EMPLOYEE_NAME=WDhh:mm,WDhh:mm,...,WDhh:mm'";
-
     public static Double _15_USD_Per_Hours(Float hours) {
         return _15 * hours.doubleValue();
     }

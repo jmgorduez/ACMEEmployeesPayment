@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.ThrowingSupplier.unchecked;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.MESSAGE_ILLEGAL_FORMAT;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.ZERO;
 import static java.util.Arrays.asList;
 import static java.util.Optional.empty;
@@ -20,6 +21,8 @@ public class ACMEEmployeesPayment {
         try (BufferedReader bufferedReader = bufferedReader(args).get()) {
             employeeSalaryCalculator()
                     .calculateSalary(unchecked(bufferedReader::readLine), System.out::println);
+        } catch (IllegalArgumentException error) {
+            System.err.println(MESSAGE_ILLEGAL_FORMAT);
         } catch (IOException | NoSuchElementException e) {
             e.printStackTrace();
         }
