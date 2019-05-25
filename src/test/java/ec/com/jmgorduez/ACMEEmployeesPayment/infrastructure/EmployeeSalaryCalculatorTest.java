@@ -30,7 +30,7 @@ class EmployeeSalaryCalculatorTest {
     @BeforeEach
     void setUp() {
         payableParser = new WorkingTimeParser(LocalTime::parse);
-        employeePaySheetParser = new EmployeePaySheetParser(payableParser::parseWorkingTime,
+        employeePaySheetParser = new EmployeePaySheetParser(payableParser::parseWorkingTimes,
                 TestDataGenerator::numberOfHours);
         employeeSalaryCalculatorUnderTest = new EmployeeSalaryCalculator(employeePaySheetParser::parseEmployeePaySheet);
         outputs = new ArrayList<>();
@@ -54,12 +54,11 @@ class EmployeeSalaryCalculatorTest {
     @Test
     void calculateSalaryOfSpecialPaySheet() {
         linesToRead = Stream.of(
-                RENE_MO_00_00_12_00_TU_10_00_12_00)
-                .collect(Collectors.toCollection(ArrayDeque::new));
+                RENE_MO_00_00_12_00_TU_10_00_12_00).collect(Collectors.toCollection(ArrayDeque::new));
         assertThat(outputs.isEmpty())
                 .isTrue();
         employeeSalaryCalculatorUnderTest.calculateSalary(linesToRead::poll, outputs::add);
         assertThat(outputs)
-                .contains(THE_AMOUNT_TO_PAY_RENE_IS_215_USD);
+                .contains(THE_AMOUNT_TO_PAY_RENE_IS_300_USD);
     }
 }

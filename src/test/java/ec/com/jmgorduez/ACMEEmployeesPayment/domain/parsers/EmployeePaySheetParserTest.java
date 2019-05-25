@@ -21,7 +21,7 @@ class EmployeePaySheetParserTest {
 
     @BeforeEach
     void setUp() {
-        this.employeePaySheetParserUnderTest = new EmployeePaySheetParser(this::getWorkingTime,
+        this.employeePaySheetParserUnderTest = new EmployeePaySheetParser(this::getWorkingTimes,
                 TestDataGenerator::numberOfHours);
         this.payables = Stream.of(MO_10_00_12_00, TH_12_00_14_00, SU_20_00_21_00)
                 .collect(Collectors.toCollection(ArrayDeque::new));
@@ -50,7 +50,7 @@ class EmployeePaySheetParserTest {
                 .contains(MO_10_00_12_00_STRING, TH_12_00_14_00_STRING, SU_20_00_21_00_STRING);
     }
 
-    private IPayable getWorkingTime(String value) {
-        return payables.poll();
+    private IPayable[] getWorkingTimes(String value) {
+        return new IPayable[]{payables.poll()};
     }
 }

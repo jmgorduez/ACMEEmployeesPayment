@@ -5,6 +5,7 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 
@@ -24,7 +25,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
     @Override
     public Double payment() {
         return workingTimes.stream()
-                .map(IPayable::payment).mapToDouble(Double::doubleValue)
+                .mapToDouble(IPayable::payment)
                 .sum();
     }
 
@@ -39,8 +40,14 @@ public class EmployeePaySheet implements IEmployeePaySheet {
     }
 
     @Override
-    public void addWorkingTime(IPayable workingTime) {
+    public void addWorkingTime(IPayable... workingTimes) {
+        Arrays.stream(workingTimes)
+                .forEach(this::addWorkingTime);
+
+    }
+
+    private void addWorkingTime(IPayable workingTime){
         workingTime.setBasicUnitOfTime(getBasicUnitOfTime);
-        workingTimes.add(workingTime);
+        this.workingTimes.add(workingTime);
     }
 }

@@ -6,6 +6,7 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePayShe
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -14,10 +15,10 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 
 public class EmployeePaySheetParser implements IEmployeePaySheetParser {
 
-    private Function<String, IPayable> getPayableItem;
+    private Function<String, IPayable[]> getPayableItem;
     private BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
 
-    public EmployeePaySheetParser(Function<String, IPayable> getPayableItem,
+    public EmployeePaySheetParser(Function<String, IPayable[]> getPayableItem,
                                   BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime){
         this.getPayableItem = getPayableItem;
         this.getBasicUnitOfTime = getBasicUnitOfTime;

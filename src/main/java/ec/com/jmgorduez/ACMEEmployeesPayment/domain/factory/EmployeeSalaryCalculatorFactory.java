@@ -16,7 +16,7 @@ public class EmployeeSalaryCalculatorFactory implements IEmployeeSalaryCalculato
     @Override
     public IEmployeeSalaryCalculator employeeSalaryCalculator() {
         IWorkingTimeParser payableParser = new WorkingTimeParser(LocalTime::parse);
-        IEmployeePaySheetParser employeePaySheetParser = new EmployeePaySheetParser(payableParser::parseWorkingTime,
+        IEmployeePaySheetParser employeePaySheetParser = new EmployeePaySheetParser(payableParser::parseWorkingTimes,
                 HOUR::basicUnitOfTime);
         return new EmployeeSalaryCalculator(employeePaySheetParser::parseEmployeePaySheet);
     }
