@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class EmployeePaySheetParserTest {
 
@@ -36,6 +37,12 @@ class EmployeePaySheetParserTest {
                 ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
                 .isEqualToIgnoringGivenFields(employeePaySheetExpected,
                         GET_BASIC_UNIT_OF_TIME);
+    }
+
+    @Test
+    void parseInvalidEmployeePaySheet() {
+        assertThatThrownBy(() -> employeePaySheetParserUnderTest.parseEmployeePaySheet(getClass().getName()))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
