@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-24T23:57:34" hostname="jm-HP-EliteBook-840-G2" time="0.009">
+<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-05-25T14:59:32" hostname="jm-HP-EliteBook-840-G2" time="0.03">
   <properties/>
-  <testcase name="parse()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" time="0.009"/>
+  <testcase name="parseWorkingTime()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" time="0.015"/>
+  <testcase name="parseWorkingTimes()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

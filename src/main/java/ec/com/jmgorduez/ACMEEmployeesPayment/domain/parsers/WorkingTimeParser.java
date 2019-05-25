@@ -38,50 +38,69 @@ public class WorkingTimeParser implements IWorkingTimeParser {
             throws IllegalArgumentException {
         LocalTime start = getStart(value);
         LocalTime end = getEnd(value);
-        PaymentStrategy paymentStrategy = getWeekDay(value).paymentStrategy(start, end);
-        return new WorkingTime(start, end, HOUR::basicUnitOfTime, paymentStrategy::paymentStrategy);
+        PaymentStrategy paymentStrategy
+                = getWeekDay(value).paymentStrategy(start, end);
+        return new WorkingTime(start, end,
+                HOUR::basicUnitOfTime, paymentStrategy::paymentStrategy);
     }
 
     private Stream<String> separateInDefinedTimes(String value) {
-        Queue<LocalTime> times = separateTimes(value);
+        Queue<String> separatedTimes = separateTimes(value);
         List<String> rangesOfTime = new ArrayList<>();
-        while (times.size() > ONE) {
-            rangesOfTime.add(getWeekDay(value).getValue()
-                    .concat(times.poll().toString()).concat(MINUS_CHARACTER)
-                    .concat(times.peek().toString()));
+        while (isNotEmpty(separatedTimes)) {
+            rangesOfTime.add(getWeekDayString(value)
+                    .concat(separatedTimes.poll()).concat(MINUS_CHARACTER)
+                    .concat(separatedTimes.peek()));
         }
         return rangesOfTime.stream();
     }
 
-    private Queue<LocalTime> separateTimes(String value) {
+    private boolean isNotEmpty(Queue<String> separateTimes) {
+        return separateTimes.size() > ONE;
+    }
+
+    private Queue<String> separateTimes(String value) {
         LocalTime start = getStart(value);
         LocalTime end = getEnd(value);
-        ArrayDeque<LocalTime> times = new ArrayDeque<>(
+        ArrayDeque<String> definedTimes = new ArrayDeque<>(
                 Stream.of(_00_00, _09_00, _18_00, _23_59)
                         .filter(start::isBefore)
-                        .filter(end::isAfter).collect(Collectors.toSet()));
-        times.addFirst(start);
-        times.addLast(end);
-        return times;
+                        .filter(end::isAfter)
+                        .map(LocalTime::toString).collect(Collectors.toSet()));
+        definedTimes.addFirst(start.toString());
+        definedTimes.addLast(end.toString());
+        return definedTimes;
     }
 
     private LocalTime getStart(String value) {
         return getTimes(value)
                 .map(localTimeParse)
-                .reduce((start, end) -> start).get();
+                .reduce(this::getFirstElement).get();
     }
 
     private LocalTime getEnd(String value) {
         return getTimes(value)
                 .map(localTimeParse)
-                .reduce((start, end) -> end).get();
+                .reduce(this::getSecondElement).get();
+    }
+
+    private LocalTime getFirstElement(LocalTime first, LocalTime second) {
+        return first;
+    }
+
+    private LocalTime getSecondElement(LocalTime first, LocalTime second) {
+        return second;
     }
 
     private Stream<String> getTimes(String value) {
         return Arrays.stream(value.substring(TWO).split(MINUS_CHARACTER));
     }
 
+    private String getWeekDayString(String value) {
+        return value.substring(ZERO, TWO);
+    }
+
     private WeekDay getWeekDay(String value) {
-        return WeekDay.parse(value.substring(ZERO, TWO));
+        return WeekDay.parse(getWeekDayString(value));
     }
 }

@@ -6,6 +6,7 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePayShe
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -14,31 +15,31 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 
 public class EmployeePaySheetParser implements IEmployeePaySheetParser {
 
-    private Function&lt;String, IPayable&gt; getPayableItem;
+    private Function&lt;String, IPayable[]&gt; getPayableItem;
     private BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime;
 
-    public EmployeePaySheetParser(Function&lt;String, IPayable&gt; getPayableItem,
-<span class="fc" id="L21">                                  BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime){</span>
-<span class="fc" id="L22">        this.getPayableItem = getPayableItem;</span>
-<span class="fc" id="L23">        this.getBasicUnitOfTime = getBasicUnitOfTime;</span>
-<span class="fc" id="L24">    }</span>
+    public EmployeePaySheetParser(Function&lt;String, IPayable[]&gt; getPayableItem,
+<span class="fc" id="L22">                                  BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime){</span>
+<span class="fc" id="L23">        this.getPayableItem = getPayableItem;</span>
+<span class="fc" id="L24">        this.getBasicUnitOfTime = getBasicUnitOfTime;</span>
+<span class="fc" id="L25">    }</span>
 
     @Override
     public IEmployeePaySheet parseEmployeePaySheet(String line) {
-<span class="fc" id="L28">        IEmployeePaySheet result = new EmployeePaySheet(getName(line), getBasicUnitOfTime);</span>
-<span class="fc" id="L29">        getWorkingTimes(line)</span>
-<span class="fc" id="L30">                .map(getPayableItem)</span>
-<span class="fc" id="L31">                .forEach(result::addWorkingTime);</span>
-<span class="fc" id="L32">        return result;</span>
+<span class="fc" id="L29">        IEmployeePaySheet result = new EmployeePaySheet(getName(line), getBasicUnitOfTime);</span>
+<span class="fc" id="L30">        getWorkingTimes(line)</span>
+<span class="fc" id="L31">                .map(getPayableItem)</span>
+<span class="fc" id="L32">                .forEach(result::addWorkingTime);</span>
+<span class="fc" id="L33">        return result;</span>
     }
 
     String getName(String line){
-<span class="fc" id="L36">        return line.split(ASSIGNMENT_CHARACTER)[ZERO];</span>
+<span class="fc" id="L37">        return line.split(ASSIGNMENT_CHARACTER)[ZERO];</span>
     }
 
     Stream&lt;String&gt; getWorkingTimes(String line){
-<span class="fc" id="L40">        Integer workingTimesStartIndex = line.indexOf(ASSIGNMENT_CHARACTER)+ ONE;</span>
-<span class="fc" id="L41">        return Stream.of(line.substring(workingTimesStartIndex).split(COMMA_CHARACTER));</span>
+<span class="fc" id="L41">        Integer workingTimesStartIndex = line.indexOf(ASSIGNMENT_CHARACTER)+ ONE;</span>
+<span class="fc" id="L42">        return Stream.of(line.substring(workingTimesStartIndex).split(COMMA_CHARACTER));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

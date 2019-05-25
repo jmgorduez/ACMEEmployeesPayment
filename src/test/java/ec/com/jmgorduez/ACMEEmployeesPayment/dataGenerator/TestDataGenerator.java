@@ -14,8 +14,12 @@ public class TestDataGenerator {
 
     public static final String INPUT_FILE_PATH = File.separator.concat("inputFile/");
     public static final String INPUT_FILE_NAME = INPUT_FILE_PATH.concat("input.txt");
-    public static final String INPUT_FILE_NAME_SPECIAL_PAYSHEET
-            = INPUT_FILE_PATH.concat("inputSpecialPaySheet.txt");
+    public static final String INPUT_FILE_NAME_COMPACT_PAYSHEET
+            = INPUT_FILE_PATH.concat("inputCompactPaySheet.txt");
+    public static final String INPUT_EMPTY_FILE_NAME
+            = INPUT_FILE_PATH.concat("emptyInput.txt");
+    public static final String INPUT_FILE_NAME_ILLEGAL_FORMAT
+            = INPUT_FILE_PATH.concat("inputIllegalFormat.txt");
 
     public static final Integer ONE = 1;
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-24T23:57:34" hostname="jm-HP-EliteBook-840-G2" time="0.048">
+<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-25T14:59:32" hostname="jm-HP-EliteBook-840-G2" time="0.039">
   <properties/>
-  <testcase name="getName()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" time="0.002"/>
-  <testcase name="getWorkingTimes()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" time="0.039"/>
-  <testcase name="parseEmployeePaySheet()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" time="0.005"/>
+  <testcase name="getName()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" time="0.004"/>
+  <testcase name="getWorkingTimes()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" time="0.025"/>
+  <testcase name="parseEmployeePaySheet()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.EmployeePaySheetParserTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

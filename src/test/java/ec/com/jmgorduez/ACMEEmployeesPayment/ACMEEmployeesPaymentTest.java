@@ -46,6 +46,24 @@ class ACMEEmployeesPaymentTest {
     }
 
     @Test
+    void mainProcessingACompactPaySheetFile() {
+        ACMEEmployeesPayment.main(new String[]{INPUT_FILE_NAME_COMPACT_PAYSHEET});
+        assertThat(outContent.toString())
+                .isEqualTo(THE_AMOUNT_TO_PAY_RENE_IS_300_USD.concat(System.lineSeparator()));
+    }
+
+    @Test
+    void mainProcessingAEmptyFile() {
+        ACMEEmployeesPayment.main(new String[]{INPUT_EMPTY_FILE_NAME});
+        assertThat(outContent.toString())
+                .isEqualTo(EMPTY_STRING);
+    }
+
+    @Test
+    void mainProcessingAFileWithIllegalFormat() {
+    }
+
+    @Test
     void bufferedReader() throws FileNotFoundException {
         assertThat(ACMEEmployeesPayment.bufferedReader().isPresent())
                 .isFalse();

@@ -6,8 +6,10 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.abstractions.IEmploy
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -17,37 +19,37 @@ import static java.util.Optional.ofNullable;
 public class EmployeeSalaryCalculator implements IEmployeeSalaryCalculator {
 
     private Function&lt;String, IEmployeePaySheet&gt; getParseEmployeePaySheet;
-<span class="fc" id="L20">    private DecimalFormat decimalFormat = new DecimalFormat();</span>
+<span class="fc" id="L22">    private DecimalFormat decimalFormat = new DecimalFormat();</span>
 
-<span class="fc" id="L22">    public EmployeeSalaryCalculator(Function&lt;String, IEmployeePaySheet&gt; getParseEmployeePaySheet) {</span>
-<span class="fc" id="L23">        this.getParseEmployeePaySheet = getParseEmployeePaySheet;</span>
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L24">    public EmployeeSalaryCalculator(Function&lt;String, IEmployeePaySheet&gt; getParseEmployeePaySheet) {</span>
+<span class="fc" id="L25">        this.getParseEmployeePaySheet = getParseEmployeePaySheet;</span>
+<span class="fc" id="L26">    }</span>
 
     @Override
     public void calculateSalary(Supplier&lt;String&gt; readLine, Consumer&lt;String&gt; writeOutput) {
-<span class="fc" id="L28">        readAllEmployeesPaySheet(readLine)</span>
-<span class="fc" id="L29">                .map(this::calculateEmployeeSalary)</span>
-<span class="fc" id="L30">                .forEach(writeOutput);</span>
-<span class="fc" id="L31">    }</span>
+<span class="fc" id="L30">        readAllEmployeesPaySheet(readLine)</span>
+<span class="fc" id="L31">                .map(this::calculateEmployeeSalary)</span>
+<span class="fc" id="L32">                .forEach(writeOutput);</span>
+<span class="fc" id="L33">    }</span>
 
     private Stream&lt;IEmployeePaySheet&gt; readAllEmployeesPaySheet(Supplier&lt;String&gt; readLine) {
-<span class="fc" id="L34">        List&lt;IEmployeePaySheet&gt; lines = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L36">        List&lt;IEmployeePaySheet&gt; lines = new ArrayList&lt;&gt;();</span>
         try {
             while (true) {
-<span class="fc" id="L37">                lines.add(</span>
-<span class="fc" id="L38">                        ofNullable(readLine.get())</span>
-<span class="fc" id="L39">                                .map(getParseEmployeePaySheet)</span>
-<span class="fc" id="L40">                                .orElseThrow(RuntimeException::new));</span>
+<span class="fc" id="L39">                lines.add(</span>
+<span class="fc" id="L40">                        ofNullable(readLine.get())</span>
+<span class="fc" id="L41">                                .map(getParseEmployeePaySheet)</span>
+<span class="fc" id="L42">                                .orElseThrow(UnsupportedOperationException::new));</span>
             }
-<span class="fc" id="L42">        } catch (RuntimeException error) {</span>
-<span class="fc" id="L43">            return lines.stream();</span>
+<span class="fc" id="L44">        } catch (UnsupportedOperationException error) {</span>
+<span class="fc" id="L45">            return lines.stream();</span>
         }
     }
 
     private String calculateEmployeeSalary(IEmployeePaySheet employeePaySheet) {
-<span class="fc" id="L48">        return THE_AMOUNT_TO_PAY_EMPLOYEE_IS_SALARY_USD</span>
-<span class="fc" id="L49">                .replace(EMPLOYEE, employeePaySheet.employeeName())</span>
-<span class="fc" id="L50">                .replace(SALARY, decimalFormat.format(employeePaySheet.payment()));</span>
+<span class="fc" id="L50">        return THE_AMOUNT_TO_PAY_EMPLOYEE_IS_SALARY_USD</span>
+<span class="fc" id="L51">                .replace(EMPLOYEE, employeePaySheet.employeeName())</span>
+<span class="fc" id="L52">                .replace(SALARY, decimalFormat.format(employeePaySheet.payment()));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
