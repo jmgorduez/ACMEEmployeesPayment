@@ -18,12 +18,15 @@ class ACMEEmployeesPaymentTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalErr = System.err;
     private final String[] args = new String[]{INPUT_FILE_NAME};
     private Queue<String> linesExpected;
 
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
         linesExpected = of(RENE_MO_10_00_12_00_TU_10_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
                 ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00,
                 JUANMA_MO_09_00_12_00_TU_09_00_12_00_TH_01_00_03_00_SA_14_00_18_00_SU_20_00_21_00,
@@ -34,6 +37,7 @@ class ACMEEmployeesPaymentTest {
     @AfterEach
     public void restoreStreams() {
         System.setOut(originalOut);
+        System.setErr(originalErr);
     }
 
     @Test
@@ -61,6 +65,9 @@ class ACMEEmployeesPaymentTest {
 
     @Test
     void mainProcessingAFileWithIllegalFormat() {
+        ACMEEmployeesPayment.main(new String[]{INPUT_FILE_NAME_ILLEGAL_FORMAT});
+        assertThat(errContent.toString())
+                .isEqualTo(MESSAGE_ILLEGAL_FORMAT);
     }
 
     @Test
