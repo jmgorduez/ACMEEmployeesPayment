@@ -37,14 +37,21 @@ public class TestDataGenerator {
     public static final LocalTime _20_00 = LocalTime.parse("20:00");
     public static final LocalTime _21_00 = LocalTime.parse("21:00");
 
+    public static final WorkingTime MO_00_00_09_00 = new WorkingTime(_00_00, _09_00,
+            TestDataGenerator::numberOfHours, TestDataGenerator::_25_USD_Per_Hours);
+    public static final WorkingTime MO_09_00_12_00 = new WorkingTime(_09_00, _12_00,
+            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
     public static final WorkingTime MO_10_00_12_00 = new WorkingTime(_10_00, _12_00,
-            HOUR::basicUnitOfTime, _15_USD_PER_UNIT_OF_TIME::paymentStrategy);
+            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
+    public static final WorkingTime TU_10_00_12_00 = new WorkingTime(_10_00, _12_00,
+            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
     public static final WorkingTime TH_12_00_14_00 = new WorkingTime(_12_00, _14_00,
-            HOUR::basicUnitOfTime, _15_USD_PER_UNIT_OF_TIME::paymentStrategy);
+            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
     public static final WorkingTime SU_20_00_21_00 = new WorkingTime(_20_00, _21_00,
-            HOUR::basicUnitOfTime, _15_USD_PER_UNIT_OF_TIME::paymentStrategy);
+            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
 
     public static final String ASTRID = "ASTRID";
+    public static final String RENE = "RENE";
 
     public static final String EMPTY_STRING = "";
 
@@ -76,6 +83,10 @@ public class TestDataGenerator {
 
     public static Double _20_USD_Per_Hours(Float hours) {
         return _20 * hours.doubleValue();
+    }
+
+    public static Double _25_USD_Per_Hours(Float hours) {
+        return _25 * hours.doubleValue();
     }
 
     public static Float numberOfHours(LocalTime start, LocalTime end) {
