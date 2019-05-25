@@ -6,8 +6,10 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.abstractions.IEmploy
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -37,9 +39,9 @@ public class EmployeeSalaryCalculator implements IEmployeeSalaryCalculator {
                 lines.add(
                         ofNullable(readLine.get())
                                 .map(getParseEmployeePaySheet)
-                                .orElseThrow(RuntimeException::new));
+                                .orElseThrow(UnsupportedOperationException::new));
             }
-        } catch (RuntimeException error) {
+        } catch (UnsupportedOperationException error) {
             return lines.stream();
         }
     }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-05-24T23:49:30" hostname="jm-HP-EliteBook-840-G2" time="0.012">
+<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-05-24T23:57:35" hostname="jm-HP-EliteBook-840-G2" time="0.01">
   <properties/>
-  <testcase name="paymentStrategyWorkDays()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.003"/>
-  <testcase name="getFirstElement()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.001"/>
-  <testcase name="parse()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.002"/>
-  <testcase name="paymentStrategyWeekendDays()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.002"/>
+  <testcase name="paymentStrategyWorkDays()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.004"/>
+  <testcase name="getFirstElement()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.0"/>
+  <testcase name="parse()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.001"/>
+  <testcase name="paymentStrategyWeekendDays()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.001"/>
   <testcase name="paymentStrategy()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDayTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
