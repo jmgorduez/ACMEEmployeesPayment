@@ -36,6 +36,8 @@ public class Constants {
     public static final LocalTime _23_59 = LocalTime.parse("23:59");
 
     public static final String MESSAGE_ILLEGAL_FORMAT
-            = "File with illegal format. The correct format should be 'EMPLOYEE_NAME=WDhh:mm,WDhh:mm,...,WDhh:mm'";
+            = "File with illegal format. The correct format should be 'EMPLOYEE_NAME=WDhh:mm,WDhh:mm,...,WDhh:mm'.";
+    public static final String MESSAGE_INVALID_FILE
+            = "Input file does not exist.";
 
 }

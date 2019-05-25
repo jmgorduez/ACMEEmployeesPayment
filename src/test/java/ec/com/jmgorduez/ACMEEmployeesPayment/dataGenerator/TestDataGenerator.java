@@ -20,6 +20,8 @@ public class TestDataGenerator {
             = INPUT_FILE_PATH.concat("emptyInput.txt");
     public static final String INPUT_FILE_NAME_ILLEGAL_FORMAT
             = INPUT_FILE_PATH.concat("inputIllegalFormat.txt");
+    public static final String INVALID_INPUT_FILE_NAME
+            = INPUT_FILE_PATH.concat("invalidInput.txt");
 
     public static final Integer ONE = 1;
 
