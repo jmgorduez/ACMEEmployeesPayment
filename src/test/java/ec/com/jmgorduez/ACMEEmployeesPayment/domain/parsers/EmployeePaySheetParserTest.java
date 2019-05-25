@@ -41,6 +41,7 @@ class EmployeePaySheetParserTest {
 
     @Test
     void parseInvalidEmployeePaySheet() {
+        payables.clear();
         assertThatThrownBy(() -> employeePaySheetParserUnderTest.parseEmployeePaySheet(getClass().getName()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
