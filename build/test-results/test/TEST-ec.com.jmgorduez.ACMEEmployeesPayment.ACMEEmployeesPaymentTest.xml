@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.ACMEEmployeesPaymentTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-05-25T14:59:32" hostname="jm-HP-EliteBook-840-G2" time="0.235">
-  <properties/>
-  <testcase name="main()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.ACMEEmployeesPaymentTest" time="0.23"/>
-  <testcase name="bufferedReader()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.ACMEEmployeesPaymentTest" time="0.004"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -11,8 +11,7 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class TestDataGenerator {
-
-    public static final String INPUT_FILE_PATH = File.separator.concat("inputFile/");
+    public static final String INPUT_FILE_PATH = "src-test-resources-inputFile-".replace("-",File.separator);
     public static final String INPUT_FILE_NAME = INPUT_FILE_PATH.concat("input.txt");
     public static final String INPUT_FILE_NAME_COMPACT_PAYSHEET
             = INPUT_FILE_PATH.concat("inputCompactPaySheet.txt");

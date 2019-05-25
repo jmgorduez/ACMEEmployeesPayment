@@ -11,8 +11,7 @@ import java.util.Queue;
 import java.util.stream.Collectors;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.MESSAGE_ILLEGAL_FORMAT;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.MESSAGE_INVALID_FILE;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static java.util.stream.Stream.of;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -40,6 +39,13 @@ class ACMEEmployeesPaymentTest {
     public void restoreStreams() {
         System.setOut(originalOut);
         System.setErr(originalErr);
+    }
+
+    @Test
+    void mainWithoutArguments() {
+        ACMEEmployeesPayment.main(new String[]{});
+        assertThat(errContent.toString())
+                .isEqualTo(MESSAGE_PARAMETER_IS_NECESSARY.concat(System.lineSeparator()));
     }
 
     @Test

@@ -39,5 +39,7 @@ public class Constants {
             = "File with illegal format. The correct format should be 'EMPLOYEE_NAME=WDhh:mm,WDhh:mm,...,WDhh:mm'.";
     public static final String MESSAGE_INVALID_FILE
             = "Input file does not exist.";
+    public static final String MESSAGE_PARAMETER_IS_NECESSARY
+            = "You need to provide a input file name.";
 
 }

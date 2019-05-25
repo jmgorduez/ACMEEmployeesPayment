@@ -1,5 +1,6 @@
 gradle=./gradlew clean
-fn=bowling-game.txt
+#This is the name of argument file name
+file=src/main/resources/inputFile/input.txt
 
 clean:
 	@ $(gradle)
@@ -7,19 +8,17 @@ clean:
 refresh:
 	@ ./gradlew --refresh-dependencies
 
-cbr:
-	@ $(gradle) run --args='$(fn)'
-
-run-app: refresh cbr
+run:
+	@ $(gradle) run --args='$(file)'
 
 jar:
 	@ $(gradle) jar
 
 test:
-	@ ./gradlew test
+	@ $(gradle) test
 
-ec.com.jmgorduez.ACMEEmployeesPayment.it:
+it:
 	@ $(gradle) integrationTest
 
 coverage:
-	@ $(gradle) test jacocoTestReport
+	@ $(gradle) test integrationTest jacocoTestReport

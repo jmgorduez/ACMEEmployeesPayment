@@ -27,6 +27,8 @@ public class ACMEEmployeesPayment {
             System.err.println(MESSAGE_ILLEGAL_FORMAT);
         } catch (IOException error) {
             System.err.println(MESSAGE_INVALID_FILE);
+        } catch (NoSuchElementException error){
+            System.err.println(MESSAGE_PARAMETER_IS_NECESSARY);
         }
     }
 
@@ -36,7 +38,8 @@ public class ACMEEmployeesPayment {
             return empty();
         }
         try {
-            File file = new File(ACMEEmployeesPayment.class.getResource(args[ZERO]).getPath());
+            Path path= Paths.get(args[ZERO]);
+            File file = path.toFile();//new File(ACMEEmployeesPayment.class.getResource(args[ZERO]).getPath());
             if (doesNotExistFile(file)) {
                 throw new FileNotFoundException();
             }
