@@ -14,7 +14,7 @@ It runs the app using the file specified as argument.
 ```
 $ make jar
 ```
-###Testing
+### Testing
 
 #### Run unit test.
 ```
@@ -30,9 +30,9 @@ $ make coverage
 ```
 The result of tests coverage will be available under: *build/reports/jacoco/test/html/*
 
-###About desing
+### About desing
 
-####Files directory
+#### Files directory
 ```
 ├── domain
 |   ├── abstractions
