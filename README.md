@@ -21,10 +21,14 @@ $ make jar
 ```
 $ make test
 ```
+The result of unit tests will be available under: *build/reports/tests/test/*
+
 #### Run integration test.
 ```
 $ make it
 ```
+The result of integration tests will be available under: *build/reports/tests/integrationTest/*
+
 #### Run test coverage.
 ```
 $ make coverage
