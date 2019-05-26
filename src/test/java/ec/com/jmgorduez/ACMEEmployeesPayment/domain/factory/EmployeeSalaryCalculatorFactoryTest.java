@@ -7,7 +7,8 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.EmployeeSalaryCalcul
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.ASTRID;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.EMPLOYEE_PAY_SHEET_PARSER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class EmployeeSalaryCalculatorFactoryTest {
@@ -24,7 +25,7 @@ class EmployeeSalaryCalculatorFactoryTest {
         assertThat(employeeSalaryCalculatorFactoryUnderTest.employeeSalaryCalculator())
                 .isEqualToIgnoringGivenFields(
                         new EmployeeSalaryCalculator(this::employeePaySheetParser),
-                        PARSE_EMPLOYEE_PAY_SHEET);
+                        EMPLOYEE_PAY_SHEET_PARSER);
     }
 
     private IEmployeePaySheet employeePaySheetParser(String value) {

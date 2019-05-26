@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Queue;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

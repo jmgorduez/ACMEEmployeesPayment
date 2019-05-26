@@ -1,15 +1,13 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheetParser;
 import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.abstractions.IEmployeeSalaryCalculator;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -18,11 +16,11 @@ import static java.util.Optional.ofNullable;
 
 public class EmployeeSalaryCalculator implements IEmployeeSalaryCalculator {
 
-    private Function<String, IEmployeePaySheet> getParseEmployeePaySheet;
+    private IEmployeePaySheetParser employeePaySheetParser;
     private DecimalFormat decimalFormat = new DecimalFormat();
 
-    public EmployeeSalaryCalculator(Function<String, IEmployeePaySheet> getParseEmployeePaySheet) {
-        this.getParseEmployeePaySheet = getParseEmployeePaySheet;
+    public EmployeeSalaryCalculator(IEmployeePaySheetParser employeePaySheetParser) {
+        this.employeePaySheetParser = employeePaySheetParser;
     }
 
     @Override
@@ -38,7 +36,7 @@ public class EmployeeSalaryCalculator implements IEmployeeSalaryCalculator {
             while (true) {
                 lines.add(
                         ofNullable(readLine.get())
-                                .map(getParseEmployeePaySheet)
+                                .map(employeePaySheetParser::parseEmployeePaySheet)
                                 .orElseThrow(UnsupportedOperationException::new));
             }
         } catch (UnsupportedOperationException error) {
@@ -49,6 +47,10 @@ public class EmployeeSalaryCalculator implements IEmployeeSalaryCalculator {
     private String calculateEmployeeSalary(IEmployeePaySheet employeePaySheet) {
         return THE_AMOUNT_TO_PAY_EMPLOYEE_IS_SALARY_USD
                 .replace(EMPLOYEE, employeePaySheet.employeeName())
-                .replace(SALARY, decimalFormat.format(employeePaySheet.payment()));
+                .replace(SALARY, format(employeePaySheet.payment()));
+    }
+
+    private String format(Double value) {
+        return decimalFormat.format(value);
     }
 }

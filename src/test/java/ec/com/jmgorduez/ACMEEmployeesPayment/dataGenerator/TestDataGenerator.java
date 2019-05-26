@@ -5,8 +5,6 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.WorkingTime;
 import java.io.File;
 import java.time.LocalTime;
 
-import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategy._15_USD_PER_UNIT_OF_TIME;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime.HOUR;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
@@ -48,15 +46,12 @@ public class TestDataGenerator {
             TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
     public static final WorkingTime MO_10_00_12_00 = new WorkingTime(_10_00, _12_00,
             TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
-    public static final WorkingTime TU_10_00_12_00 = new WorkingTime(_10_00, _12_00,
-            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
     public static final WorkingTime TH_12_00_14_00 = new WorkingTime(_12_00, _14_00,
             TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
     public static final WorkingTime SU_20_00_21_00 = new WorkingTime(_20_00, _21_00,
             TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
 
     public static final String ASTRID = "ASTRID";
-    public static final String RENE = "RENE";
 
     public static final String EMPTY_STRING = "";
 
@@ -81,7 +76,7 @@ public class TestDataGenerator {
 
     public static final String GET_BASIC_UNIT_OF_TIME = "getBasicUnitOfTime";
     public static final String PAYMENT_STRATEGY = "getPaymentStrategy";
-    public static final String PARSE_EMPLOYEE_PAY_SHEET = "getParseEmployeePaySheet";
+    public static final String EMPLOYEE_PAY_SHEET_PARSER = "employeePaySheetParser";
 
     public static Double _15_USD_Per_Hours(Float hours) {
         return _15 * hours.doubleValue();

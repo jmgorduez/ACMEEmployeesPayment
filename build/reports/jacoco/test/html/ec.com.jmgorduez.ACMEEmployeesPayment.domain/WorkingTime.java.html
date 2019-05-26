@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WorkingTime.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ACMEEmployeesPayment</a> &gt; <a href="index.source.html" class="el_package">ec.com.jmgorduez.ACMEEmployeesPayment.domain</a> &gt; <span class="el_source">WorkingTime.java</span></div><h1>WorkingTime.java</h1><pre class="source lang-java linenums">package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
+
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
+
+import java.time.LocalTime;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._60;
+import static java.time.temporal.ChronoUnit.MINUTES;
+
+public class WorkingTime implements IPayable {
+
+    private LocalTime startTime;
+    private LocalTime endTime;
+    BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime;
+    Function&lt;Float, Double&gt; getPaymentStrategy;
+
+    public WorkingTime(LocalTime startTime, LocalTime endTime,
+                       BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime,
+<span class="fc" id="L21">                       Function&lt;Float, Double&gt; getPaymentStrategy) {</span>
+<span class="fc" id="L22">        this.startTime = startTime;</span>
+<span class="fc" id="L23">        this.endTime = endTime;</span>
+<span class="fc" id="L24">        this.getBasicUnitOfTime = getBasicUnitOfTime;</span>
+<span class="fc" id="L25">        this.getPaymentStrategy = getPaymentStrategy;</span>
+<span class="fc" id="L26">    }</span>
+
+<span class="fc" id="L28">    public WorkingTime(LocalTime startTime, LocalTime endTime, Function&lt;Float, Double&gt; getPaymentStrategy) {</span>
+<span class="fc" id="L29">        this.startTime = startTime;</span>
+<span class="fc" id="L30">        this.endTime = endTime;</span>
+<span class="pc" id="L31">        this.getBasicUnitOfTime = (start, end) -&gt; start.until(end, MINUTES) / _60;</span>
+<span class="fc" id="L32">        this.getPaymentStrategy = getPaymentStrategy;</span>
+<span class="fc" id="L33">    }</span>
+
+    @Override
+    public Double payment() {
+<span class="fc" id="L37">        return getPaymentStrategy.apply(getBasicUnitOfTime.apply(startTime, endTime));</span>
+    }
+
+    @Override
+    public void setBasicUnitOfTime(BiFunction&lt;LocalTime, LocalTime, Float&gt; getBasicUnitOfTime) {
+<span class="fc" id="L42">        this.getBasicUnitOfTime = getBasicUnitOfTime;</span>
+<span class="fc" id="L43">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

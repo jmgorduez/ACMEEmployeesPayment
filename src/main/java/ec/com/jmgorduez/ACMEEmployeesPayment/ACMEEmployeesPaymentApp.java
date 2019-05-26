@@ -1,12 +1,10 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment;
 
 
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeeSalaryCalculatorFactory;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.factory.EmployeeSalaryCalculatorFactory;
-import ec.com.jmgorduez.ACMEEmployeesPayment.infrastructure.abstractions.IEmployeeSalaryCalculator;
 
 import java.io.*;
-import java.net.URL;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -17,17 +15,21 @@ import static java.util.Arrays.asList;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
-public class ACMEEmployeesPayment {
+public class ACMEEmployeesPaymentApp {
+
+    private static IEmployeeSalaryCalculatorFactory calculatorFactory
+            = new EmployeeSalaryCalculatorFactory();
 
     public static void main(String[] args) {
         try (BufferedReader bufferedReader = bufferedReader(args).get()) {
-            employeeSalaryCalculator()
+            calculatorFactory
+                    .employeeSalaryCalculator()
                     .calculateSalary(unchecked(bufferedReader::readLine), System.out::println);
         } catch (IllegalArgumentException error) {
             System.err.println(MESSAGE_ILLEGAL_FORMAT);
         } catch (IOException error) {
             System.err.println(MESSAGE_INVALID_FILE);
-        } catch (NoSuchElementException error){
+        } catch (NoSuchElementException error) {
             System.err.println(MESSAGE_PARAMETER_IS_NECESSARY);
         }
     }
@@ -38,8 +40,7 @@ public class ACMEEmployeesPayment {
             return empty();
         }
         try {
-            Path path= Paths.get(args[ZERO]);
-            File file = path.toFile();//new File(ACMEEmployeesPayment.class.getResource(args[ZERO]).getPath());
+            File file = Paths.get(args[ZERO]).toFile();
             if (doesNotExistFile(file)) {
                 throw new FileNotFoundException();
             }
@@ -53,8 +54,4 @@ public class ACMEEmployeesPayment {
         return !file.exists();
     }
 
-    private static IEmployeeSalaryCalculator employeeSalaryCalculator() {
-        return new EmployeeSalaryCalculatorFactory()
-                .employeeSalaryCalculator();
-    }
 }

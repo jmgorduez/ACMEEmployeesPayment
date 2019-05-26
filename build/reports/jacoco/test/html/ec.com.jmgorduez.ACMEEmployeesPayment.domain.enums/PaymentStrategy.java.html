@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentStrategy.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ACMEEmployeesPayment</a> &gt; <a href="index.source.html" class="el_package">ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums</a> &gt; <span class="el_source">PaymentStrategy.java</span></div><h1>PaymentStrategy.java</h1><pre class="source lang-java linenums">package ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums;
+
+import java.util.function.Function;
+
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
+
+<span class="fc" id="L7">public enum PaymentStrategy {</span>
+<span class="fc" id="L8">    _15_USD_PER_UNIT_OF_TIME(PaymentStrategy::_15_USD_Per_Unit_Of_Time),</span>
+<span class="fc" id="L9">    _20_USD_PER_UNIT_OF_TIME(PaymentStrategy::_20_USD_Per_Unit_Of_Time),</span>
+<span class="fc" id="L10">    _25_USD_PER_UNIT_OF_TIME(PaymentStrategy::_25_USD_Per_Unit_Of_Time),</span>
+<span class="fc" id="L11">    _30_USD_PER_UNIT_OF_TIME(PaymentStrategy::_30_USD_Per_Unit_Of_Time);</span>
+    
+    private final Function&lt;Float, Double&gt; paymentStrategy;
+
+<span class="fc" id="L15">    PaymentStrategy(Function&lt;Float, Double&gt; paymentStrategy) {</span>
+<span class="fc" id="L16">        this.paymentStrategy = paymentStrategy;</span>
+<span class="fc" id="L17">    }</span>
+
+    public Double paymentStrategy(Float basicUnitOfTime){
+<span class="fc" id="L20">        return paymentStrategy.apply(basicUnitOfTime);</span>
+    }
+
+    private static Double _15_USD_Per_Unit_Of_Time(Float basicUnitOfTime){
+<span class="fc" id="L24">        return _15*basicUnitOfTime.doubleValue();</span>
+    }
+
+    private static Double _20_USD_Per_Unit_Of_Time(Float basicUnitOfTime){
+<span class="fc" id="L28">        return _20*basicUnitOfTime.doubleValue();</span>
+    }
+
+    private static Double _25_USD_Per_Unit_Of_Time(Float basicUnitOfTime){
+<span class="fc" id="L32">        return _25*basicUnitOfTime.doubleValue();</span>
+    }
+
+    private static Double _30_USD_Per_Unit_Of_Time(Float basicUnitOfTime){
+<span class="fc" id="L36">        return _30*basicUnitOfTime.doubleValue();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -3,7 +3,6 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 
-import javax.swing.text.html.Option;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;

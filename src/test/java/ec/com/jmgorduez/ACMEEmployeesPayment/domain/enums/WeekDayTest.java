@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums;
 
-import ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
@@ -9,7 +8,6 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.WeekDay.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class WeekDayTest {
 

@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.ACMEEmployeesPayment;
 
-import ec.com.jmgorduez.ACMEEmployeesPayment.ACMEEmployeesPayment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,7 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static java.util.stream.Stream.of;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ACMEEmployeesPaymentTest {
+class ACMEEmployeesPaymentAppTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -43,14 +42,14 @@ class ACMEEmployeesPaymentTest {
 
     @Test
     void mainWithoutArguments() {
-        ACMEEmployeesPayment.main(new String[]{});
+        ACMEEmployeesPaymentApp.main(new String[]{});
         assertThat(errContent.toString())
                 .isEqualTo(MESSAGE_PARAMETER_IS_NECESSARY.concat(System.lineSeparator()));
     }
 
     @Test
     void main() {
-        ACMEEmployeesPayment.main(new String[]{INPUT_FILE_NAME});
+        ACMEEmployeesPaymentApp.main(new String[]{INPUT_FILE_NAME});
         assertThat(outContent.toString())
                 .isEqualTo(THE_AMOUNT_TO_PAY_RENE_IS_215_USD.concat(System.lineSeparator())
                         .concat(THE_AMOUNT_TO_PAY_ASTRID_IS_85_USD).concat(System.lineSeparator())
@@ -59,45 +58,45 @@ class ACMEEmployeesPaymentTest {
 
     @Test
     void mainProcessingACompactPaySheetFile() {
-        ACMEEmployeesPayment.main(new String[]{INPUT_FILE_NAME_COMPACT_PAYSHEET});
+        ACMEEmployeesPaymentApp.main(new String[]{INPUT_FILE_NAME_COMPACT_PAYSHEET});
         assertThat(outContent.toString())
                 .isEqualTo(THE_AMOUNT_TO_PAY_RENE_IS_300_USD.concat(System.lineSeparator()));
     }
 
     @Test
     void mainProcessingAEmptyFile() {
-        ACMEEmployeesPayment.main(new String[]{INPUT_EMPTY_FILE_NAME});
+        ACMEEmployeesPaymentApp.main(new String[]{INPUT_EMPTY_FILE_NAME});
         assertThat(outContent.toString())
                 .isEqualTo(EMPTY_STRING);
     }
 
     @Test
     void mainProcessingAFileWithIllegalFormat() {
-        ACMEEmployeesPayment.main(new String[]{INPUT_FILE_NAME_ILLEGAL_FORMAT});
+        ACMEEmployeesPaymentApp.main(new String[]{INPUT_FILE_NAME_ILLEGAL_FORMAT});
         assertThat(errContent.toString())
                 .isEqualTo(MESSAGE_ILLEGAL_FORMAT.concat(System.lineSeparator()));
     }
 
     @Test
     void mainProcessingAInvalidFile() {
-        ACMEEmployeesPayment.main(new String[]{INVALID_INPUT_FILE_NAME});
+        ACMEEmployeesPaymentApp.main(new String[]{INVALID_INPUT_FILE_NAME});
         assertThat(errContent.toString())
                 .isEqualTo(MESSAGE_INVALID_FILE.concat(System.lineSeparator()));
     }
 
     @Test
     void mainProcessingAEmptyFileName() {
-        ACMEEmployeesPayment.main(new String[]{EMPTY_STRING});
+        ACMEEmployeesPaymentApp.main(new String[]{EMPTY_STRING});
         assertThat(errContent.toString())
                 .isEqualTo(MESSAGE_INVALID_FILE.concat(System.lineSeparator()));
     }
 
     @Test
     void bufferedReader() throws FileNotFoundException {
-        assertThat(ACMEEmployeesPayment.bufferedReader().isPresent())
+        assertThat(ACMEEmployeesPaymentApp.bufferedReader().isPresent())
                 .isFalse();
         try (BufferedReader bufferedReader
-                     = ACMEEmployeesPayment.bufferedReader(args).get()) {
+                     = ACMEEmployeesPaymentApp.bufferedReader(args).get()) {
             bufferedReader.lines()
                     .forEach(this::isTheExpectedLine);
         } catch (IOException e) {

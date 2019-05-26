@@ -21,4 +21,4 @@ it:
 	@ $(gradle) integrationTest
 
 coverage:
-	@ $(gradle) test integrationTest jacocoTestReport
+	@ $(gradle) test jacocoTestReport

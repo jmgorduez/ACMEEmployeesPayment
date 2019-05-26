@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._09_00;
