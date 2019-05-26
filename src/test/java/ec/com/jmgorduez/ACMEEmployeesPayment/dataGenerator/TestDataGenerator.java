@@ -33,6 +33,8 @@ public class TestDataGenerator {
     public static final Double _87_USD_50_c = 87.5D;
     public static final Double _90_USD = 90D;
 
+    public static final Integer THREE = 3;
+
     public static final LocalTime _10_00 = LocalTime.parse("10:00");
     public static final LocalTime _11_30 = LocalTime.parse("11:30");
     public static final LocalTime _12_00 = LocalTime.parse("12:00");

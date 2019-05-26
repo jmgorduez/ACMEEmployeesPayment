@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.Queue;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._00_00;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._09_00;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -45,5 +47,15 @@ class WorkingTimeParserTest {
                 .isEqualToIgnoringGivenFields(MO_00_00_09_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
         assertThat(result.poll())
                 .isEqualToIgnoringGivenFields(MO_09_00_12_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+    }
+
+    @Test
+    void separateTimes() {
+        Queue<String> result
+                = workingTimeParserUnderTest.separateInDefinedTimes(MO_00_00_12_00_STRING);
+        assertThat(result)
+                .contains(_00_00.toString(), _09_00.toString(), _12_00.toString());
+        assertThat(result.size())
+                .isEqualTo(THREE);
     }
 }

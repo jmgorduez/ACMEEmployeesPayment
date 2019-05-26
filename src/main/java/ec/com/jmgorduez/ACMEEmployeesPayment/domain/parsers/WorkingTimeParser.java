@@ -44,7 +44,7 @@ public class WorkingTimeParser implements IWorkingTimeParser {
                 HOUR::basicUnitOfTime, paymentStrategy::paymentStrategy);
     }
 
-    private Stream<String> separateInDefinedWorkingTimes(String value) {
+    Stream<String> separateInDefinedWorkingTimes(String value) {
         Queue<String> separatedTimes = separateInDefinedTimes(value);
         List<String> rangesOfTime = new ArrayList<>();
         while (isNotEmpty(separatedTimes)) {
@@ -62,7 +62,7 @@ public class WorkingTimeParser implements IWorkingTimeParser {
                 Stream.of(_00_00, _09_00, _18_00, _23_59)
                         .filter(start::isBefore)
                         .filter(end::isAfter)
-                        .map(LocalTime::toString).collect(Collectors.toSet()));
+                        .map(LocalTime::toString).collect(Collectors.toList()));
         definedTimes.addFirst(start.toString());
         definedTimes.addLast(end.toString());
         return definedTimes;
