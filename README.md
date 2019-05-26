@@ -50,4 +50,4 @@ The result of tests coverage will be available under: *build/reports/jacoco/test
     * Under *factory* package can find a concrete class factory.
     * Under *parsers* package can find concrete classes that parse an EmployeePaySheet object and an WorkingTime one.
 * Under *infrastructure* package can find a class to present the result to the user. This package follows the same structure of *domain* package.
-* Under *utils* package can find a utility class with all of constants used in the app.
+* Under *utils* package can find a utilitarian class with all of constants used in the app.
