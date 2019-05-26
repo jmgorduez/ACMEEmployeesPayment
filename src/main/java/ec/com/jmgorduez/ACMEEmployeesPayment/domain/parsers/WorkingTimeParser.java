@@ -28,7 +28,7 @@ public class WorkingTimeParser implements IWorkingTimeParser {
         try {
             return new IPayable[]{parseWorkingTime(value)};
         } catch (IllegalArgumentException e) {
-            return separateInDefinedTimes(value)
+            return separateInDefinedWorkingTimes(value)
                     .map(this::parseWorkingTime)
                     .toArray(IPayable[]::new);
         }
@@ -44,8 +44,8 @@ public class WorkingTimeParser implements IWorkingTimeParser {
                 HOUR::basicUnitOfTime, paymentStrategy::paymentStrategy);
     }
 
-    private Stream<String> separateInDefinedTimes(String value) {
-        Queue<String> separatedTimes = separateTimes(value);
+    private Stream<String> separateInDefinedWorkingTimes(String value) {
+        Queue<String> separatedTimes = separateInDefinedTimes(value);
         List<String> rangesOfTime = new ArrayList<>();
         while (isNotEmpty(separatedTimes)) {
             rangesOfTime.add(getWeekDayString(value)
@@ -55,11 +55,7 @@ public class WorkingTimeParser implements IWorkingTimeParser {
         return rangesOfTime.stream();
     }
 
-    private boolean isNotEmpty(Queue<String> separateTimes) {
-        return separateTimes.size() > ONE;
-    }
-
-    private Queue<String> separateTimes(String value) {
+    Queue<String> separateInDefinedTimes(String value) {
         LocalTime start = getStart(value);
         LocalTime end = getEnd(value);
         ArrayDeque<String> definedTimes = new ArrayDeque<>(
@@ -70,6 +66,10 @@ public class WorkingTimeParser implements IWorkingTimeParser {
         definedTimes.addFirst(start.toString());
         definedTimes.addLast(end.toString());
         return definedTimes;
+    }
+
+    private boolean isNotEmpty(Queue<String> separateTimes) {
+        return separateTimes.size() > ONE;
     }
 
     private LocalTime getStart(String value) {
