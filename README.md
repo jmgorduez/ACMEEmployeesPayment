@@ -3,13 +3,14 @@
 ```
 $ make run
 ```
-It runs the app using the file under: */src/main/resources/inputFile/input.txt*.
+It runs the app using the file under: *src/main/resources/inputFile/input.txt*.
 
 #### Run app with arguments.
 ```
-$ make run file=/src/main/resources/inputFile/input.txt
+$ make run file=src/main/resources/inputFile/input.txt
 ```
 It runs the app using the file specified as argument.
+
 #### Generate .jar file.
 ```
 $ make jar
