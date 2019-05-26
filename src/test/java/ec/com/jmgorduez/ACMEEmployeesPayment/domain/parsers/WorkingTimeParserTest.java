@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalTime;
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Queue;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._00_00;
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._09_00;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -57,5 +59,16 @@ class WorkingTimeParserTest {
                 .contains(_00_00.toString(), _09_00.toString(), _12_00.toString());
         assertThat(result.size())
                 .isEqualTo(THREE);
+    }
+
+    @Test
+    void separateInDefinedTimes(){
+        List<String> result
+                = workingTimeParserUnderTest.separateInDefinedWorkingTimes(MO_00_00_12_00_STRING)
+                .collect(Collectors.toList());
+        assertThat(result)
+                .contains(MO_00_00_09_00_STRING, MO_09_00_12_00_STRING);
+        assertThat(result.size())
+                .isEqualTo(TWO);
     }
 }
