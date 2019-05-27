@@ -45,7 +45,7 @@ The result of tests coverage will be available under: *build/reports/jacoco/test
 |   ├── factory
 |   └── parsers
 ├── infrastructure
-|   ├── abstractions
+|   └── abstractions
 └── utils   
 ```
 * Under domain package can find the solution domain classes: 
