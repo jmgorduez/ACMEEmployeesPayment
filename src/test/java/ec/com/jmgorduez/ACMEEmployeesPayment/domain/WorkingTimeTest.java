@@ -40,7 +40,7 @@ class WorkingTimeTest {
     void setBasicUnitOfTime(){
         BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected = TestDataGenerator::numberOfHours;
         workingTimeUnderTest.setBasicUnitOfTime(getBasicUnitOfTimeExpected);
-        assertThat(workingTimeUnderTest.getBasicUnitOfTime)
+        assertThat(workingTimeUnderTest.getNumbersOfUnitsOfTimeWorked)
                 .isEqualTo(getBasicUnitOfTimeExpected);
     }
 }

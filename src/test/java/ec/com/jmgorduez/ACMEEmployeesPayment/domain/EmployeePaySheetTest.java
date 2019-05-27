@@ -61,7 +61,7 @@ class EmployeePaySheetTest {
         BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected
                 = TestDataGenerator::numberOfHours;
         employeePaySheetUnderTest.setBasicUnitOfTime(getBasicUnitOfTimeExpected);
-        assertThat(employeePaySheetUnderTest.getBasicUnitOfTime)
+        assertThat(employeePaySheetUnderTest.getNumbersOfUnitsOfTimeWorked)
                 .isEqualTo(getBasicUnitOfTimeExpected);
     }
 

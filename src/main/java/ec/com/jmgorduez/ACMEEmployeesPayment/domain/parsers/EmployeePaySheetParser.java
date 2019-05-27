@@ -14,17 +14,17 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 public class EmployeePaySheetParser implements IEmployeePaySheetParser {
 
     private IWorkingTimeParser workingTimeParser;
-    private BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
+    private BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
 
     public EmployeePaySheetParser(IWorkingTimeParser workingTimeParser,
-                                  BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime){
+                                  BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked){
         this.workingTimeParser = workingTimeParser;
-        this.getBasicUnitOfTime = getBasicUnitOfTime;
+        this.getNumbersOfUnitsOfTimeWorked = getNumbersOfUnitsOfTimeWorked;
     }
 
     @Override
     public IEmployeePaySheet parseEmployeePaySheet(String line) {
-        IEmployeePaySheet employeePaySheet = new EmployeePaySheet(getName(line), getBasicUnitOfTime);
+        IEmployeePaySheet employeePaySheet = new EmployeePaySheet(getName(line), getNumbersOfUnitsOfTimeWorked);
         getWorkingTimes(line)
                 .map(workingTimeParser::parseWorkingTimes)
                 .forEach(employeePaySheet::addWorkingTime);

@@ -78,8 +78,8 @@ public class TestDataGenerator {
     public static final String TH_12_00_14_00_STRING = "TH12:00-14:00";
     public static final String SU_20_00_21_00_STRING = "SU20:00-21:00";
 
-    public static final String GET_BASIC_UNIT_OF_TIME = "getBasicUnitOfTime";
-    public static final String PAYMENT_STRATEGY = "getPaymentStrategy";
+    public static final String GET_NUMBERS_OF_UNITS_OF_TIME_WORKED = "getNumbersOfUnitsOfTimeWorked";
+    public static final String HOW_MUCH_TO_PAY_FOR = "howMuchToPayFor";
     public static final String EMPLOYEE_PAY_SHEET_PARSER = "employeePaySheetParser";
 
     public static Double _15_USD_Per_Hours(Float hours) {

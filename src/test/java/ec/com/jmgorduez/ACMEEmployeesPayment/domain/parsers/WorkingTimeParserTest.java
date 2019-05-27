@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
@@ -29,11 +28,11 @@ class WorkingTimeParserTest {
     @Test
     void parseWorkingTime() {
         assertThat(workingTimeParserUnderTest.parseWorkingTime(MO_10_00_12_00_STRING))
-                .isEqualToIgnoringGivenFields(MO_10_00_12_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+                .isEqualToIgnoringGivenFields(MO_10_00_12_00, GET_NUMBERS_OF_UNITS_OF_TIME_WORKED, HOW_MUCH_TO_PAY_FOR);
         assertThat(workingTimeParserUnderTest.parseWorkingTime(TH_12_00_14_00_STRING))
-                .isEqualToIgnoringGivenFields(TH_12_00_14_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+                .isEqualToIgnoringGivenFields(TH_12_00_14_00, GET_NUMBERS_OF_UNITS_OF_TIME_WORKED, HOW_MUCH_TO_PAY_FOR);
         assertThat(workingTimeParserUnderTest.parseWorkingTime(SU_20_00_21_00_STRING))
-                .isEqualToIgnoringGivenFields(SU_20_00_21_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+                .isEqualToIgnoringGivenFields(SU_20_00_21_00, GET_NUMBERS_OF_UNITS_OF_TIME_WORKED, HOW_MUCH_TO_PAY_FOR);
         assertThatThrownBy(() -> workingTimeParserUnderTest.parseWorkingTime(MO_00_00_12_00_STRING))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -43,12 +42,12 @@ class WorkingTimeParserTest {
         Queue<IPayable> result
                 = new ArrayDeque<>(Arrays.asList(workingTimeParserUnderTest.parseWorkingTimes(MO_10_00_12_00_STRING)));
         assertThat(result.poll())
-                .isEqualToIgnoringGivenFields(MO_10_00_12_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+                .isEqualToIgnoringGivenFields(MO_10_00_12_00, GET_NUMBERS_OF_UNITS_OF_TIME_WORKED, HOW_MUCH_TO_PAY_FOR);
         result = new ArrayDeque<>(Arrays.asList(workingTimeParserUnderTest.parseWorkingTimes(MO_00_00_12_00_STRING)));
         assertThat(result.poll())
-                .isEqualToIgnoringGivenFields(MO_00_00_09_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+                .isEqualToIgnoringGivenFields(MO_00_00_09_00, GET_NUMBERS_OF_UNITS_OF_TIME_WORKED, HOW_MUCH_TO_PAY_FOR);
         assertThat(result.poll())
-                .isEqualToIgnoringGivenFields(MO_09_00_12_00, GET_BASIC_UNIT_OF_TIME, PAYMENT_STRATEGY);
+                .isEqualToIgnoringGivenFields(MO_09_00_12_00, GET_NUMBERS_OF_UNITS_OF_TIME_WORKED, HOW_MUCH_TO_PAY_FOR);
     }
 
     @Test

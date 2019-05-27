@@ -14,13 +14,13 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
     List<IPayable> workingTimes;
     private final String employeeName;
-    BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
+    BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
 
     public EmployeePaySheet(String employeeName,
-                            BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime){
+                            BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked){
         this.employeeName = employeeName;
         workingTimes = new ArrayList<>();
-        this.getBasicUnitOfTime = getBasicUnitOfTime;
+        this.getNumbersOfUnitsOfTimeWorked = getNumbersOfUnitsOfTimeWorked;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
     @Override
     public void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime) {
-        this.getBasicUnitOfTime = getBasicUnitOfTime;
+        this.getNumbersOfUnitsOfTimeWorked = getBasicUnitOfTime;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
     private void addWorkingTime(Optional<IPayable> workingTimeOptional){
         IPayable workingTime = workingTimeOptional.orElseThrow(IllegalArgumentException::new);
-        workingTime.setBasicUnitOfTime(getBasicUnitOfTime);
+        workingTime.setBasicUnitOfTime(getNumbersOfUnitsOfTimeWorked);
         this.workingTimes.add(workingTime);
     }
 }

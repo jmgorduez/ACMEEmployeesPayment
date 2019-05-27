@@ -41,7 +41,7 @@ public class WorkingTimeParser implements IWorkingTimeParser {
         PaymentStrategy paymentStrategy
                 = getWeekDay(value).paymentStrategy(start, end);
         return new WorkingTime(start, end,
-                HOUR::basicUnitOfTime, paymentStrategy::paymentStrategy);
+                HOUR::basicUnitOfTime, paymentStrategy::howMuchToPayFor);
     }
 
     Stream<String> separateInDefinedWorkingTimes(String value) {

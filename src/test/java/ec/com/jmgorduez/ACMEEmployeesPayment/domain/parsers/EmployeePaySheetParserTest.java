@@ -36,7 +36,7 @@ class EmployeePaySheetParserTest {
         assertThat(employeePaySheetParserUnderTest.parseEmployeePaySheet(
                 ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
                 .isEqualToIgnoringGivenFields(employeePaySheetExpected,
-                        GET_BASIC_UNIT_OF_TIME);
+                        GET_NUMBERS_OF_UNITS_OF_TIME_WORKED);
     }
 
     @Test

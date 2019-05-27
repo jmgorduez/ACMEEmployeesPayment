@@ -13,32 +13,33 @@ public class WorkingTime implements IPayable {
 
     private LocalTime startTime;
     private LocalTime endTime;
-    BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime;
-    Function<Float, Double> getPaymentStrategy;
+    BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
+    Function<Float, Double> howMuchToPayFor;
 
     public WorkingTime(LocalTime startTime, LocalTime endTime,
-                       BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime,
-                       Function<Float, Double> getPaymentStrategy) {
+                       BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked,
+                       Function<Float, Double> howMuchToPayFor) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.getBasicUnitOfTime = getBasicUnitOfTime;
-        this.getPaymentStrategy = getPaymentStrategy;
+        this.getNumbersOfUnitsOfTimeWorked = getNumbersOfUnitsOfTimeWorked;
+        this.howMuchToPayFor = howMuchToPayFor;
     }
 
-    public WorkingTime(LocalTime startTime, LocalTime endTime, Function<Float, Double> getPaymentStrategy) {
+    public WorkingTime(LocalTime startTime, LocalTime endTime, Function<Float, Double> howMuchToPayFor) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.getBasicUnitOfTime = (start, end) -> start.until(end, MINUTES) / _60;
-        this.getPaymentStrategy = getPaymentStrategy;
+        this.getNumbersOfUnitsOfTimeWorked = (start, end) -> start.until(end, MINUTES) / _60;
+        this.howMuchToPayFor = howMuchToPayFor;
     }
 
     @Override
     public Double payment() {
-        return getPaymentStrategy.apply(getBasicUnitOfTime.apply(startTime, endTime));
+        Float numbersOfUnitsOfTimeWorked = getNumbersOfUnitsOfTimeWorked.apply(startTime, endTime);
+        return howMuchToPayFor.apply(numbersOfUnitsOfTimeWorked);
     }
 
     @Override
     public void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime) {
-        this.getBasicUnitOfTime = getBasicUnitOfTime;
+        this.getNumbersOfUnitsOfTimeWorked = getBasicUnitOfTime;
     }
 }

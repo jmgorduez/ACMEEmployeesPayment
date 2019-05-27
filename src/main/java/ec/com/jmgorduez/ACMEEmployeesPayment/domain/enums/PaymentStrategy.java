@@ -10,14 +10,14 @@ public enum PaymentStrategy {
     _25_USD_PER_UNIT_OF_TIME(PaymentStrategy::_25_USD_Per_Unit_Of_Time),
     _30_USD_PER_UNIT_OF_TIME(PaymentStrategy::_30_USD_Per_Unit_Of_Time);
     
-    private final Function<Float, Double> paymentStrategy;
+    private final Function<Float, Double> howMuchToPayFor;
 
-    PaymentStrategy(Function<Float, Double> paymentStrategy) {
-        this.paymentStrategy = paymentStrategy;
+    PaymentStrategy(Function<Float, Double> howMuchToPayFor) {
+        this.howMuchToPayFor = howMuchToPayFor;
     }
 
-    public Double paymentStrategy(Float basicUnitOfTime){
-        return paymentStrategy.apply(basicUnitOfTime);
+    public Double howMuchToPayFor(Float basicUnitOfTime){
+        return howMuchToPayFor.apply(basicUnitOfTime);
     }
 
     private static Double _15_USD_Per_Unit_Of_Time(Float basicUnitOfTime){
