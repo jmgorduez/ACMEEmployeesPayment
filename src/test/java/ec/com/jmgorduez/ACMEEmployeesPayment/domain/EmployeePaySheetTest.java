@@ -5,12 +5,10 @@ import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalTime;
-import java.util.function.BiFunction;
-
 import static ec.com.jmgorduez.ACMEEmployeesPayment.dataGenerator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class EmployeePaySheetTest {
 

@@ -8,7 +8,6 @@ public class Constants {
     public static final Integer ONE = 1;
     public static final Integer TWO = 2;
 
-    public static final Float _8 = 8F;
     public static final Float _15 = 15F;
     public static final Float _20 = 20F;
     public static final Float _25 = 25F;

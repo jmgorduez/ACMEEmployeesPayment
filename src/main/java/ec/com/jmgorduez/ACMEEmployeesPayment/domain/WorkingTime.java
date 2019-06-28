@@ -3,21 +3,19 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
 
 import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._15;
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._60;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
-public class WorkingTime implements IPayable {
+public final class WorkingTime implements IPayable {
 
-    private LocalTime startTime;
-    private LocalTime endTime;
-    BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
-    Function<Float, Double> howMuchToPayFor;
+    private final LocalTime startTime;
+    private final LocalTime endTime;
+    private final BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
+    private final Function<Float, Double> howMuchToPayFor;
 
     private WorkingTime(Builder builder) {
         this.startTime = builder.startTime;
@@ -42,7 +40,7 @@ public class WorkingTime implements IPayable {
             this.startTime = startTime;
             this.endTime = endTime;
             this.getNumbersOfUnitsOfTimeWorked = (start, end) -> start.until(end, MINUTES) / _60;
-            this.howMuchToPayFor = aFloat -> Double.valueOf(aFloat*_15);
+            this.howMuchToPayFor = amountHour -> Double.valueOf(amountHour*_15);
         }
 
         public Builder numbersOfUnitsOfTimeWorked(BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked) {

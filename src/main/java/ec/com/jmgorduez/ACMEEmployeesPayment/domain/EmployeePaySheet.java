@@ -2,6 +2,7 @@ package ec.com.jmgorduez.ACMEEmployeesPayment.domain;
 
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IEmployeePaySheet;
 import ec.com.jmgorduez.ACMEEmployeesPayment.domain.abstractions.IPayable;
+import ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.TypeBasicUnitOfTime;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -10,13 +11,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
-import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._8;
 
-public class EmployeePaySheet implements IEmployeePaySheet {
+public final class EmployeePaySheet implements IEmployeePaySheet {
 
-    List<IPayable> workingTimes;
+    private final List<IPayable> workingTimes;
     private final String employeeName;
-    BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
+    private final BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
 
     private EmployeePaySheet(Builder builder) {
         this.employeeName = builder.employeeName;
@@ -44,7 +44,7 @@ public class EmployeePaySheet implements IEmployeePaySheet {
 
         public Builder(String employeeName) {
             this.employeeName = employeeName;
-            this.getNumbersOfUnitsOfTimeWorked = (localTime, localTime2) -> _8;
+            this.getNumbersOfUnitsOfTimeWorked = TypeBasicUnitOfTime.HOUR::basicUnitOfTime;
             this.workingTimes = new ArrayList<>();
         }
 
