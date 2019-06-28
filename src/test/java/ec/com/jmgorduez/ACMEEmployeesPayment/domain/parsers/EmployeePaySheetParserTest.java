@@ -30,9 +30,10 @@ class EmployeePaySheetParserTest {
 
     @Test
     void parseEmployeePaySheet() {
-        EmployeePaySheet employeePaySheetExpected = new EmployeePaySheet(ASTRID,
-                TestDataGenerator::numberOfHours);
-        payables.stream().forEach(employeePaySheetExpected::addWorkingTime);
+        EmployeePaySheet.Builder builder = new EmployeePaySheet.Builder(ASTRID)
+                .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours);
+        payables.stream().forEach(builder::addWorkingTime);
+        EmployeePaySheet employeePaySheetExpected = builder.build();
         assertThat(employeePaySheetParserUnderTest.parseEmployeePaySheet(
                 ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
                 .isEqualToIgnoringGivenFields(employeePaySheetExpected,
@@ -47,13 +48,13 @@ class EmployeePaySheetParserTest {
     }
 
     @Test
-    void getName(){
+    void getName() {
         assertThat(employeePaySheetParserUnderTest.getName(ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
                 .isEqualTo(ASTRID);
     }
 
     @Test
-    void getWorkingTimes(){
+    void getWorkingTimes() {
         assertThat(employeePaySheetParserUnderTest.getWorkingTimes(ASTRID_MO_10_00_12_00_TH_12_00_14_00_SU_20_00_21_00))
                 .contains(MO_10_00_12_00_STRING, TH_12_00_14_00_STRING, SU_20_00_21_00_STRING);
     }

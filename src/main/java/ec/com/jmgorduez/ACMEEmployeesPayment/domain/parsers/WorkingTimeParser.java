@@ -40,8 +40,10 @@ public class WorkingTimeParser implements IWorkingTimeParser {
         LocalTime end = getEnd(value);
         PaymentStrategy paymentStrategy
                 = getWeekDay(value).paymentStrategy(start, end);
-        return new WorkingTime(start, end,
-                HOUR::basicUnitOfTime, paymentStrategy::howMuchToPayFor);
+        return new WorkingTime.Builder(start, end)
+                .numbersOfUnitsOfTimeWorked(HOUR::basicUnitOfTime)
+                .howMuchToPayFor(paymentStrategy::howMuchToPayFor)
+                .build();
     }
 
     Stream<String> separateInDefinedWorkingTimes(String value) {

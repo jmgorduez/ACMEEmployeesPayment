@@ -24,11 +24,12 @@ public class EmployeePaySheetParser implements IEmployeePaySheetParser {
 
     @Override
     public IEmployeePaySheet parseEmployeePaySheet(String line) {
-        IEmployeePaySheet employeePaySheet = new EmployeePaySheet(getName(line), getNumbersOfUnitsOfTimeWorked);
+        EmployeePaySheet.Builder builder = new EmployeePaySheet.Builder(getName(line))
+                .numbersOfUnitsOfTimeWorked(getNumbersOfUnitsOfTimeWorked);
         getWorkingTimes(line)
                 .map(workingTimeParser::parseWorkingTimes)
-                .forEach(employeePaySheet::addWorkingTime);
-        return employeePaySheet;
+                .forEach(builder::addWorkingTime);
+        return builder.build();
     }
 
     String getName(String line){

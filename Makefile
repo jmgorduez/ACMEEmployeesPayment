@@ -1,4 +1,4 @@
-gradle=./gradlew clean
+gradle=sh gradlew clean
 #This is the name of argument file name
 file=src/main/resources/inputFile/input.txt
 

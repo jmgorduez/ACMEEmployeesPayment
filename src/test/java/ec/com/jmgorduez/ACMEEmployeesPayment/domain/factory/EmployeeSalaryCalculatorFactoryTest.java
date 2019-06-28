@@ -29,6 +29,8 @@ class EmployeeSalaryCalculatorFactoryTest {
     }
 
     private IEmployeePaySheet employeePaySheetParser(String value) {
-        return new EmployeePaySheet(ASTRID, TestDataGenerator::numberOfHours);
+        return new EmployeePaySheet.Builder(ASTRID)
+                .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+                .build();
     }
 }

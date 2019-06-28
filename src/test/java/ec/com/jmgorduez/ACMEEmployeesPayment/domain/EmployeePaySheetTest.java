@@ -18,18 +18,22 @@ class EmployeePaySheetTest {
 
     @BeforeEach
     void setUp() {
-        employeePaySheetUnderTest = new EmployeePaySheet(ASTRID,
-                TestDataGenerator::numberOfHours);
+        employeePaySheetUnderTest = new EmployeePaySheet.Builder(ASTRID)
+                .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+                .build();
     }
 
     @Test
     void payment() {
+        EmployeePaySheet.Builder builder = new EmployeePaySheet.Builder(ASTRID)
+                .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours);
         IPayable workingTime = mockWorkingTime();
         when(workingTime.payment()).thenReturn(_37_USD_50_c);
-        employeePaySheetUnderTest.addWorkingTime(workingTime);
+        builder.addWorkingTime(workingTime);
         workingTime = mockWorkingTime();
         when(workingTime.payment()).thenReturn(_50_USD);
-        employeePaySheetUnderTest.addWorkingTime(workingTime);
+        builder.addWorkingTime(workingTime);
+        employeePaySheetUnderTest = builder.build();
         assertThat(employeePaySheetUnderTest.payment())
                 .isEqualByComparingTo(_87_USD_50_c);
     }
@@ -40,33 +44,7 @@ class EmployeePaySheetTest {
                 .isEqualTo(ASTRID);
     }
 
-    @Test
-    void addWorkingTime() {
-        assertThat(employeePaySheetUnderTest.workingTimes.isEmpty())
-                .isTrue();
-        employeePaySheetUnderTest.addWorkingTime(mockWorkingTime());
-        assertThat(employeePaySheetUnderTest.workingTimes.size())
-                .isEqualTo(ONE);
-    }
-
-    @Test
-    void addWorkingTimeVerifyIfSetBasicUnitOfTimeIsCalled() {
-        IPayable workingTime = mockWorkingTime();
-        employeePaySheetUnderTest.addWorkingTime(workingTime);
-        verify(workingTime, times(ONE)).setBasicUnitOfTime(any());
-    }
-
-    @Test
-    void setBasicUnitOfTime(){
-        BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected
-                = TestDataGenerator::numberOfHours;
-        employeePaySheetUnderTest.setBasicUnitOfTime(getBasicUnitOfTimeExpected);
-        assertThat(employeePaySheetUnderTest.getNumbersOfUnitsOfTimeWorked)
-                .isEqualTo(getBasicUnitOfTimeExpected);
-    }
-
-
-    private IPayable mockWorkingTime(){
+    private IPayable mockWorkingTime() {
         return mock(IPayable.class);
     }
 }

@@ -9,7 +9,7 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants.*;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class TestDataGenerator {
-    public static final String INPUT_FILE_PATH = "src-test-resources-inputFile-".replace("-",File.separator);
+    public static final String INPUT_FILE_PATH = "src-test-resources-inputFile-".replace("-", File.separator);
     public static final String INPUT_FILE_NAME = INPUT_FILE_PATH.concat("input.txt");
     public static final String INPUT_FILE_NAME_COMPACT_PAYSHEET
             = INPUT_FILE_PATH.concat("inputCompactPaySheet.txt");
@@ -42,16 +42,26 @@ public class TestDataGenerator {
     public static final LocalTime _20_00 = LocalTime.parse("20:00");
     public static final LocalTime _21_00 = LocalTime.parse("21:00");
 
-    public static final WorkingTime MO_00_00_09_00 = new WorkingTime(_00_00, _09_00,
-            TestDataGenerator::numberOfHours, TestDataGenerator::_25_USD_Per_Hours);
-    public static final WorkingTime MO_09_00_12_00 = new WorkingTime(_09_00, _12_00,
-            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
-    public static final WorkingTime MO_10_00_12_00 = new WorkingTime(_10_00, _12_00,
-            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
-    public static final WorkingTime TH_12_00_14_00 = new WorkingTime(_12_00, _14_00,
-            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
-    public static final WorkingTime SU_20_00_21_00 = new WorkingTime(_20_00, _21_00,
-            TestDataGenerator::numberOfHours, TestDataGenerator::_15_USD_Per_Hours);
+    public static final WorkingTime MO_00_00_09_00 = new WorkingTime.Builder(_00_00, _09_00)
+            .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+            .howMuchToPayFor(TestDataGenerator::_25_USD_Per_Hours)
+            .build();
+    public static final WorkingTime MO_09_00_12_00 = new WorkingTime.Builder(_09_00, _12_00)
+            .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+            .howMuchToPayFor(TestDataGenerator::_15_USD_Per_Hours)
+            .build();
+    public static final WorkingTime MO_10_00_12_00 = new WorkingTime.Builder(_10_00, _12_00)
+            .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+            .howMuchToPayFor(TestDataGenerator::_15_USD_Per_Hours)
+            .build();
+    public static final WorkingTime TH_12_00_14_00 = new WorkingTime.Builder(_12_00, _14_00)
+            .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+            .howMuchToPayFor(TestDataGenerator::_15_USD_Per_Hours)
+            .build();
+    public static final WorkingTime SU_20_00_21_00 = new WorkingTime.Builder(_20_00, _21_00)
+            .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+            .howMuchToPayFor(TestDataGenerator::_15_USD_Per_Hours)
+            .build();
 
     public static final String ASTRID = "ASTRID";
 

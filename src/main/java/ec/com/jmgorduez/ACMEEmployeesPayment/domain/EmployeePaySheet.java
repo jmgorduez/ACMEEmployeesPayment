@@ -10,17 +10,18 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
+import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._8;
+
 public class EmployeePaySheet implements IEmployeePaySheet {
 
     List<IPayable> workingTimes;
     private final String employeeName;
     BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
 
-    public EmployeePaySheet(String employeeName,
-                            BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked){
-        this.employeeName = employeeName;
-        workingTimes = new ArrayList<>();
-        this.getNumbersOfUnitsOfTimeWorked = getNumbersOfUnitsOfTimeWorked;
+    private EmployeePaySheet(Builder builder) {
+        this.employeeName = builder.employeeName;
+        this.getNumbersOfUnitsOfTimeWorked = builder.getNumbersOfUnitsOfTimeWorked;
+        workingTimes = builder.workingTimes;
     }
 
     @Override
@@ -31,26 +32,41 @@ public class EmployeePaySheet implements IEmployeePaySheet {
     }
 
     @Override
-    public void setBasicUnitOfTime(BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTime) {
-        this.getNumbersOfUnitsOfTimeWorked = getBasicUnitOfTime;
-    }
-
-    @Override
     public String employeeName() {
         return employeeName;
     }
 
-    @Override
-    public void addWorkingTime(IPayable... workingTimes) {
-        Arrays.stream(workingTimes)
-                .map(Optional::ofNullable)
-                .forEach(this::addWorkingTime);
 
-    }
+    public static class Builder {
+        private final String employeeName;
+        private BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked;
+        private List<IPayable> workingTimes;
 
-    private void addWorkingTime(Optional<IPayable> workingTimeOptional){
-        IPayable workingTime = workingTimeOptional.orElseThrow(IllegalArgumentException::new);
-        workingTime.setBasicUnitOfTime(getNumbersOfUnitsOfTimeWorked);
-        this.workingTimes.add(workingTime);
+        public Builder(String employeeName) {
+            this.employeeName = employeeName;
+            this.getNumbersOfUnitsOfTimeWorked = (localTime, localTime2) -> _8;
+            this.workingTimes = new ArrayList<>();
+        }
+
+        public Builder numbersOfUnitsOfTimeWorked(BiFunction<LocalTime, LocalTime, Float> getNumbersOfUnitsOfTimeWorked) {
+            this.getNumbersOfUnitsOfTimeWorked = getNumbersOfUnitsOfTimeWorked;
+            return this;
+        }
+
+        public Builder addWorkingTime(IPayable... workingTimes) {
+            Arrays.stream(workingTimes)
+                    .map(Optional::ofNullable)
+                    .forEach(this::addWorkingTime);
+            return this;
+        }
+
+        private void addWorkingTime(Optional<IPayable> workingTimeOptional) {
+            IPayable workingTime = workingTimeOptional.orElseThrow(IllegalArgumentException::new);
+            this.workingTimes.add(workingTime);
+        }
+
+        public EmployeePaySheet build() {
+            return new EmployeePaySheet(this);
+        }
     }
 }

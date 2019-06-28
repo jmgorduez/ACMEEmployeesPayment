@@ -16,31 +16,31 @@ class WorkingTimeTest {
     private WorkingTime workingTimeUnderTest;
 
     @BeforeEach
-    void setUp(){
-        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, TestDataGenerator::_15_USD_Per_Hours);
+    void setUp() {
+        workingTimeUnderTest = new WorkingTime.Builder(_09_00, _12_00)
+                .howMuchToPayFor(TestDataGenerator::_15_USD_Per_Hours)
+                .build();
     }
 
     @Test
     void payment() {
-        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, TestDataGenerator::numberOfHours,
-                TestDataGenerator::_15_USD_Per_Hours);
+        workingTimeUnderTest = new WorkingTime.Builder(_09_00, _12_00)
+                .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+                .howMuchToPayFor(TestDataGenerator::_15_USD_Per_Hours)
+                .build();
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_45_USD);
-        workingTimeUnderTest = new WorkingTime(_09_00, _12_00, TestDataGenerator::numberOfHours,
-                TestDataGenerator::_20_USD_Per_Hours);
+        workingTimeUnderTest = new WorkingTime.Builder(_09_00, _12_00)
+                .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+                .howMuchToPayFor(TestDataGenerator::_20_USD_Per_Hours)
+                .build();
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_60_USD);
-        workingTimeUnderTest = new WorkingTime(_09_00, _11_30, TestDataGenerator::numberOfHours,
-                TestDataGenerator::_20_USD_Per_Hours);
+        workingTimeUnderTest = new WorkingTime.Builder(_09_00, _11_30)
+                .numbersOfUnitsOfTimeWorked(TestDataGenerator::numberOfHours)
+                .howMuchToPayFor(TestDataGenerator::_20_USD_Per_Hours)
+                .build();
         assertThat(workingTimeUnderTest.payment())
                 .isEqualByComparingTo(_50_USD);
-    }
-
-    @Test
-    void setBasicUnitOfTime(){
-        BiFunction<LocalTime, LocalTime, Float> getBasicUnitOfTimeExpected = TestDataGenerator::numberOfHours;
-        workingTimeUnderTest.setBasicUnitOfTime(getBasicUnitOfTimeExpected);
-        assertThat(workingTimeUnderTest.getNumbersOfUnitsOfTimeWorked)
-                .isEqualTo(getBasicUnitOfTimeExpected);
     }
 }
