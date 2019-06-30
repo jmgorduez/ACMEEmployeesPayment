@@ -1,4 +1,4 @@
-gradle=sh gradlew clean
+gradle= sh gradlew clean
 #This is the name of argument file name
 file=src/main/resources/inputFile/input.txt
 
@@ -6,7 +6,7 @@ clean:
 	@ $(gradle)
 
 refresh:
-	@ ./gradlew --refresh-dependencies
+	@ sh gradlew --refresh-dependencies
 
 run:
 	@ $(gradle) run --args='$(file)'

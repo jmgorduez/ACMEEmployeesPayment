@@ -10,7 +10,7 @@ import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._15;
 import static ec.com.jmgorduez.ACMEEmployeesPayment.utils.Constants._60;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
-public final class WorkingTime implements IPayable {
+public class WorkingTime implements IPayable {
 
     private final LocalTime startTime;
     private final LocalTime endTime;

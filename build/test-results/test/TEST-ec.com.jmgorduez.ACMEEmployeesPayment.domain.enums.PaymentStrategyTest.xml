@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-30T02:08:14" hostname="jm-HP-EliteBook-840-G2" time="0.001">
+  <properties/>
+  <testcase name="howMuchToPayFor()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.enums.PaymentStrategyTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

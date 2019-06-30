@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-06-30T02:08:13" hostname="jm-HP-EliteBook-840-G2" time="0.062">
+  <properties/>
+  <testcase name="parseWorkingTime()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" time="0.029"/>
+  <testcase name="separateTimes()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" time="0.007"/>
+  <testcase name="parseWorkingTimes()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" time="0.013"/>
+  <testcase name="separateInDefinedTimes()" classname="ec.com.jmgorduez.ACMEEmployeesPayment.domain.parsers.WorkingTimeParserTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
